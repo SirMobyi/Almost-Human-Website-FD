@@ -48,7 +48,7 @@ const ContactSection = () => {
           <p className="text-xl text-muted-foreground">Your imagination made real.</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6 mb-8">
+        <form onSubmit={handleSubmit} className="space-y-6 mb-8" aria-label="Contact form">
           <div>
             <Input
               type="text"
@@ -56,6 +56,9 @@ const ContactSection = () => {
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               className="bg-card/50 border-border focus:border-primary"
+              required
+              aria-label="Your name"
+              name="name"
             />
           </div>
 
@@ -66,6 +69,9 @@ const ContactSection = () => {
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               className="bg-card/50 border-border focus:border-primary"
+              required
+              aria-label="Your email address"
+              name="email"
             />
           </div>
 
@@ -76,6 +82,9 @@ const ContactSection = () => {
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
               rows={6}
               className="bg-card/50 border-border focus:border-primary resize-none"
+              required
+              aria-label="Your message"
+              name="message"
             />
           </div>
 
@@ -89,6 +98,7 @@ const ContactSection = () => {
               variant="outline"
               onClick={handleBookCall}
               className="flex-1 border-primary hover:bg-primary/10"
+              aria-label="Book a call on Instagram"
             >
               Book a Call
             </Button>

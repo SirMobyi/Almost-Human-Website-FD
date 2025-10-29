@@ -2,13 +2,14 @@ import heroBg from "@/assets/hero-bg.jpg";
 
 const Hero = () => {
   return (
-    <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
+    <header className="relative h-screen w-full flex items-center justify-center overflow-hidden">
       {/* Background image with overlay */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0" aria-hidden="true">
         <img
           src={heroBg}
-          alt="AlmostHuman hero background"
+          alt="Cinematic grainy gradient background in purple and black tones"
           className="w-full h-full object-cover"
+          loading="eager"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/60" />
       </div>
@@ -24,12 +25,12 @@ const Hero = () => {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce" aria-hidden="true">
         <div className="w-6 h-10 border-2 border-primary/50 rounded-full flex items-start justify-center p-2">
           <div className="w-1.5 h-1.5 bg-primary rounded-full" />
         </div>
       </div>
-    </section>
+    </header>
   );
 };
 

@@ -39,7 +39,7 @@ const WorkSection = () => {
             <h2 className="text-4xl md:text-6xl font-bold mb-4 relative z-10">
               Not another AI studio
             </h2>
-            <div className="absolute inset-0 bg-primary/10 blur-3xl rounded-full" />
+            <div className="absolute inset-0 bg-primary/10 blur-3xl rounded-full" aria-hidden="true" />
           </div>
         </div>
 
@@ -51,29 +51,31 @@ const WorkSection = () => {
         </p>
 
         {/* Video carousel */}
-        <div className="relative">
+        <div className="relative" role="region" aria-label="Work showcase carousel">
           <div className="flex items-center justify-center gap-4">
             <Button
               variant="ghost"
               size="icon"
               onClick={prevSlide}
               className="absolute left-0 z-10 hover:bg-primary/20"
+              aria-label="Previous video"
             >
               <ChevronLeft className="h-8 w-8" />
             </Button>
 
             <div className="w-full max-w-5xl aspect-video bg-muted/20 backdrop-blur-sm rounded-lg border border-border flex items-center justify-center overflow-hidden">
               <div className="text-center p-8">
-                <div className="w-16 h-16 mx-auto mb-4 border-2 border-primary rounded-full flex items-center justify-center">
+                <div className="w-16 h-16 mx-auto mb-4 border-2 border-primary rounded-full flex items-center justify-center" aria-hidden="true">
                   <svg
                     className="w-8 h-8 text-primary"
                     fill="currentColor"
                     viewBox="0 0 20 20"
+                    aria-hidden="true"
                   >
                     <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
                   </svg>
                 </div>
-                <p className="text-muted-foreground">Video {currentIndex + 1}</p>
+                <p className="text-muted-foreground" aria-live="polite">Video {currentIndex + 1} of {videos.length}</p>
                 <p className="text-sm text-muted-foreground/60 mt-2">Upload your work videos here</p>
               </div>
             </div>
@@ -83,6 +85,7 @@ const WorkSection = () => {
               size="icon"
               onClick={nextSlide}
               className="absolute right-0 z-10 hover:bg-primary/20"
+              aria-label="Next video"
             >
               <ChevronRight className="h-8 w-8" />
             </Button>
