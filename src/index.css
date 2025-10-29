@@ -19,6 +19,7 @@ All colors MUST be HSL.
 
     --primary: 262 83% 58%;
     --primary-foreground: 0 0% 98%;
+    --primary-rgb: 167, 139, 250;
 
     --secondary: 262 60% 20%;
     --secondary-foreground: 0 0% 98%;

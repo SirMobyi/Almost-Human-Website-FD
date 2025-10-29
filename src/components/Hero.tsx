@@ -1,7 +1,6 @@
 import heroBg from "@/assets/hero-bg.png";
 import heroBlur from "@/assets/hero-bg-blur.jpg";
 import { useParallax } from "@/hooks/useParallax";
-import { useTypewriter } from "@/hooks/useTypewriter";
 import { useState } from "react";
 import GridBackground from "./GridBackground";
 import ScrollIndicator from "./ScrollIndicator";
@@ -9,11 +8,6 @@ import ScrollIndicator from "./ScrollIndicator";
 const Hero = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const parallaxOffset = useParallax(0.5);
-  const { displayedText } = useTypewriter({ 
-    text: "Making AI films feel human", 
-    speed: 80, 
-    delay: 1000 
-  });
 
   return (
     <header className="relative h-screen w-full flex items-center justify-center overflow-hidden">
@@ -54,13 +48,37 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto animate-fade-in-up">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold mb-4 sm:mb-6 lg:mb-8 tracking-tight leading-tight text-white">
-          ALMOSTHUMAN
-        </h1>
-        <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-foreground/80 font-light max-w-4xl mx-auto min-h-[2.5rem] sm:min-h-[3rem]">
-          {displayedText}
-        </p>
+      <div className="relative z-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto h-full flex flex-col justify-between py-24 md:py-32">
+        {/* Top Section - Two Text Zones */}
+        <div className="flex justify-between items-start gap-8 animate-fade-in">
+          {/* Left: Italic Serif Supporting Text */}
+          <div className="max-w-md">
+            <p className="font-serif italic text-xl sm:text-2xl md:text-3xl lg:text-4xl text-white/90 font-normal leading-relaxed tracking-wide">
+              Making AI films feel human
+            </p>
+          </div>
+          
+          {/* Right: Company Text */}
+          <div className="text-right max-w-xs hidden md:block">
+            <p className="font-sans text-base sm:text-lg md:text-xl lg:text-2xl text-white/80 font-light tracking-widest uppercase">
+              A WLDD COMPANY
+            </p>
+          </div>
+        </div>
+
+        {/* Center Section - Hero Text */}
+        <div className="text-center animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+          <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[12rem] font-black tracking-tighter leading-none bg-gradient-to-br from-primary via-primary/90 to-primary/70 bg-clip-text text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.1)] drop-shadow-[0_0_30px_rgba(var(--primary-rgb),0.3)]">
+            ALMOSTHUMAN
+          </h1>
+        </div>
+
+        {/* Mobile Company Text */}
+        <div className="text-center md:hidden animate-fade-in">
+          <p className="font-sans text-sm text-white/70 tracking-widest uppercase">
+            A WLDD COMPANY
+          </p>
+        </div>
       </div>
 
       <ScrollIndicator />
