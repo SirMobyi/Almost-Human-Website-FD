@@ -6,7 +6,6 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const WorkSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isLoading, setIsLoading] = useState(true);
   const { targetRef, hasIntersected } = useIntersectionObserver();
   
   const swipeRef = useSwipeGesture({
@@ -16,12 +15,10 @@ const WorkSection = () => {
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % WORK_VIDEOS.length);
-    setIsLoading(true);
   };
 
   const prevSlide = () => {
     setCurrentIndex((prev) => (prev - 1 + WORK_VIDEOS.length) % WORK_VIDEOS.length);
-    setIsLoading(true);
   };
 
   const scrollToContact = () => {
@@ -88,9 +85,6 @@ const WorkSection = () => {
             <div className="aspect-video bg-black rounded-lg overflow-hidden shadow-2xl">
               {hasIntersected ? (
                 <>
-                  {isLoading && (
-                    <div className="absolute inset-0 bg-black" />
-                  )}
                   <iframe
                     className="w-full h-full"
                     src={`https://www.youtube.com/embed/${currentVideo.id}?controls=1&modestbranding=1&rel=0`}
@@ -98,7 +92,6 @@ const WorkSection = () => {
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                     loading="lazy"
-                    onLoad={() => setIsLoading(false)}
                   />
                 </>
               ) : (
@@ -132,7 +125,6 @@ const WorkSection = () => {
                   key={index}
                   onClick={() => {
                     setCurrentIndex(index);
-                    setIsLoading(true);
                   }}
                   className={`w-2 h-2 rounded-full transition-all ${
                     index === currentIndex
