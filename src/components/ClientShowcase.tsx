@@ -58,47 +58,44 @@ const ClientShowcase = () => {
       />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* Glassmorphic container */}
-        <div className="backdrop-blur-2xl backdrop-saturate-[180%] backdrop-brightness-110 bg-white/[0.03] border border-white/[0.15] rounded-3xl p-8 md:p-12 lg:p-16 shadow-2xl shadow-primary/5 transform-gpu">
-          <h2 className="text-3xl md:text-5xl font-bold text-center mb-12 text-glow-sm">
-            Trusted by Leading Brands
-          </h2>
+        <h2 className="text-3xl md:text-5xl font-bold text-center mb-12 text-glow-sm">
+          Trusted by Leading Brands
+        </h2>
 
+        <div
+          className="relative overflow-visible"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onFocus={() => setIsPaused(true)}
+          onBlur={() => setIsPaused(false)}
+        >
           <div
-            className="relative overflow-visible"
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
-            onFocus={() => setIsPaused(true)}
-            onBlur={() => setIsPaused(false)}
+            className={`flex gap-12 ${
+              isPaused ? "[animation-play-state:paused]" : ""
+            }`}
+            style={{
+              animation: "scroll 30s linear infinite",
+              width: "fit-content",
+            }}
           >
-            <div
-              className={`flex gap-12 ${
-                isPaused ? "[animation-play-state:paused]" : ""
-              }`}
-              style={{
-                animation: "scroll 30s linear infinite",
-                width: "fit-content",
-              }}
-            >
-              {/* First set */}
-              {clients.map((client, index) => (
-                <ClientLogo
-                  key={`${client.name}-1`}
-                  name={client.name}
-                  logo={client.logo}
-                  index={index}
-                />
-              ))}
-              {/* Duplicate set for seamless loop */}
-              {clients.map((client, index) => (
-                <ClientLogo
-                  key={`${client.name}-2`}
-                  name={client.name}
-                  logo={client.logo}
-                  index={index}
-                />
-              ))}
-            </div>
+            {/* First set */}
+            {clients.map((client, index) => (
+              <ClientLogo
+                key={`${client.name}-1`}
+                name={client.name}
+                logo={client.logo}
+                index={index}
+              />
+            ))}
+            {/* Duplicate set for seamless loop */}
+            {clients.map((client, index) => (
+              <ClientLogo
+                key={`${client.name}-2`}
+                name={client.name}
+                logo={client.logo}
+                index={index}
+              />
+            ))}
           </div>
         </div>
       </div>

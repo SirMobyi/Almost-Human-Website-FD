@@ -137,7 +137,7 @@ const ContactSection = () => {
       }`}
     >
       <div className="max-w-4xl mx-auto">
-        <div className="backdrop-blur-3xl backdrop-saturate-[200%] backdrop-brightness-[115%] bg-white/[0.08] border border-white/[0.2] rounded-3xl p-5 sm:p-8 lg:p-12 shadow-inner shadow-white/5 shadow-2xl shadow-primary/20 transform-gpu">
+        <div className="backdrop-blur-xl bg-card/30 border border-border/50 rounded-3xl p-5 sm:p-8 lg:p-12 shadow-2xl">
           <div className="text-center mb-6 sm:mb-8 md:mb-12">
             <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-3 sm:mb-4">
               Let's create something <span className="whitespace-nowrap">almost human.</span>
@@ -154,7 +154,7 @@ const ContactSection = () => {
                 placeholder="Name"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="backdrop-blur-md bg-white/[0.05] border-white/[0.15] focus:bg-white/[0.08] focus:backdrop-blur-lg focus:border-primary transition-all duration-300"
+                className="bg-card/50 border-border focus:border-primary"
                 required
                 maxLength={FORM_CONFIG.maxNameLength}
                 disabled={isSubmitting}
@@ -170,7 +170,7 @@ const ContactSection = () => {
                 placeholder="Email"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="backdrop-blur-md bg-white/[0.05] border-white/[0.15] focus:bg-white/[0.08] focus:backdrop-blur-lg focus:border-primary transition-all duration-300"
+                className="bg-card/50 border-border focus:border-primary"
                 required
                 maxLength={FORM_CONFIG.maxEmailLength}
                 disabled={isSubmitting}
@@ -186,7 +186,7 @@ const ContactSection = () => {
                 disabled={isSubmitting}
                 required
               >
-                <SelectTrigger id="projectType" className="backdrop-blur-md bg-white/[0.05] border-white/[0.15] focus:bg-white/[0.08] focus:backdrop-blur-lg focus:border-primary transition-all duration-300">
+                <SelectTrigger id="projectType" className="bg-card/50 border-border focus:border-primary">
                   <SelectValue placeholder="Select project type" />
                 </SelectTrigger>
                 <SelectContent className="bg-popover border border-border z-50">
@@ -207,7 +207,7 @@ const ContactSection = () => {
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 rows={6}
-                className="backdrop-blur-md bg-white/[0.05] border-white/[0.15] focus:bg-white/[0.08] focus:backdrop-blur-lg focus:border-primary resize-none transition-all duration-300"
+                className="bg-card/50 border-border focus:border-primary resize-none"
                 required
                 maxLength={FORM_CONFIG.maxMessageLength}
                 disabled={isSubmitting}
@@ -239,7 +239,7 @@ const ContactSection = () => {
                 size="lg"
                 variant="outline"
                 onClick={handleBookCall}
-                className="flex-1 backdrop-blur-lg bg-white/[0.08] border-primary hover:bg-white/[0.15] hover:backdrop-blur-xl h-14 sm:h-14 text-lg sm:text-lg font-bold transition-all duration-300"
+                className="flex-1 border-primary hover:bg-primary/10 h-14 sm:h-14 text-lg sm:text-lg font-bold"
                 disabled={isSubmitting}
                 aria-label="Book a call on Instagram"
               >

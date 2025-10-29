@@ -65,7 +65,7 @@ const ServicesSection = () => {
   return (
     <section id="services" className="py-12 sm:py-20 px-4 sm:px-6 bg-gradient-to-b from-background/80 to-background">
       <div className="max-w-5xl mx-auto">
-        <div className="backdrop-blur-2xl backdrop-saturate-[180%] backdrop-brightness-110 bg-white/[0.05] border border-white/[0.18] rounded-3xl p-4 sm:p-8 lg:p-12 shadow-2xl shadow-primary/10 transform-gpu">
+        <div className="backdrop-blur-xl bg-card/30 border border-border/50 rounded-3xl p-4 sm:p-8 lg:p-12 shadow-2xl">
           <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold text-center mb-3 sm:mb-4 animate-fade-in">
             What Do We Do
           </h2>
@@ -79,7 +79,7 @@ const ServicesSection = () => {
               return (
                 <article
                   key={index}
-                  className="border border-white/[0.12] rounded-lg overflow-hidden backdrop-blur-xl backdrop-saturate-150 bg-white/[0.03] hover:bg-white/[0.08] hover:backdrop-blur-2xl hover:border-primary/50 transition-all duration-500 hover-glow group transform-gpu"
+                  className="border border-border rounded-lg overflow-hidden backdrop-blur-sm bg-card/50 hover:border-primary/50 transition-all duration-300 hover-glow group"
                   role="listitem"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
