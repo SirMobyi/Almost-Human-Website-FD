@@ -48,19 +48,19 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto h-full flex flex-col justify-between py-24 md:py-32">
+      <div className="relative z-10 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 max-w-7xl mx-auto h-full flex flex-col justify-between py-16 sm:py-20 md:py-24 lg:py-32">
         {/* Top Section - Two Text Zones */}
-        <div className="flex justify-between items-start gap-8 animate-fade-in">
+        <div className="flex justify-between items-start gap-4 sm:gap-6 md:gap-8 animate-fade-in">
           {/* Left: Italic Serif Supporting Text */}
           <div className="max-w-md">
-            <p className="font-serif italic text-xl sm:text-2xl md:text-3xl lg:text-4xl text-white/90 font-normal leading-relaxed tracking-wide">
+            <p className="font-serif italic text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-white/90 font-normal leading-relaxed tracking-wide">
               Making AI films feel human
             </p>
           </div>
           
           {/* Right: Company Text */}
           <div className="text-right max-w-xs hidden md:block">
-            <p className="font-sans text-base sm:text-lg md:text-xl lg:text-2xl text-white/80 font-light tracking-widest uppercase">
+            <p className="font-sans text-sm md:text-base lg:text-lg xl:text-xl text-white/80 font-light tracking-widest uppercase">
               A WLDD COMPANY
             </p>
           </div>
@@ -68,14 +68,14 @@ const Hero = () => {
 
         {/* Center Section - Hero Text */}
         <div className="text-center animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-          <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[12rem] font-black tracking-tighter leading-none bg-gradient-to-br from-primary via-primary/90 to-primary/70 bg-clip-text text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.1)] drop-shadow-[0_0_30px_rgba(var(--primary-rgb),0.3)]">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl 2xl:text-[10rem] font-black tracking-tighter leading-[0.85] md:leading-none bg-gradient-to-br from-primary via-primary/90 to-primary/70 bg-clip-text text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.1)] drop-shadow-[0_0_30px_rgba(var(--primary-rgb),0.3)]">
             ALMOSTHUMAN
           </h1>
         </div>
 
         {/* Mobile Company Text */}
         <div className="text-center md:hidden animate-fade-in">
-          <p className="font-sans text-sm text-white/70 tracking-widest uppercase">
+          <p className="font-sans text-xs sm:text-sm text-white/70 tracking-widest uppercase">
             A WLDD COMPANY
           </p>
         </div>
