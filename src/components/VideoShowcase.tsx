@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 import { SHOWCASE_VIDEO } from "@/config/constants";
 import { Play } from "lucide-react";
@@ -8,6 +8,13 @@ const VideoShowcase = () => {
   const { targetRef, hasIntersected } = useIntersectionObserver({
     threshold: 0.3,
   });
+
+  // Autoplay when section comes into view
+  useEffect(() => {
+    if (hasIntersected) {
+      setIsPlaying(true);
+    }
+  }, [hasIntersected]);
 
   return (
     <section
