@@ -40,7 +40,7 @@ const ClientShowcase = () => {
         </h2>
 
         <div
-          className="relative overflow-hidden"
+          className="relative overflow-visible"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
           onFocus={() => setIsPaused(true)}
@@ -59,7 +59,7 @@ const ClientShowcase = () => {
             {clients.map((client) => (
               <div
                 key={`${client.name}-1`}
-                className="flex-shrink-0 w-32 h-16 flex items-center justify-center transition-transform duration-300 hover:scale-110"
+                className="flex-shrink-0 w-32 h-16 flex items-center justify-center transition-transform duration-300 hover:scale-110 hover:z-10"
               >
                 <img
                   src={client.logo}
@@ -77,7 +77,7 @@ const ClientShowcase = () => {
             {clients.map((client) => (
               <div
                 key={`${client.name}-2`}
-                className="flex-shrink-0 w-32 h-16 flex items-center justify-center transition-transform duration-300 hover:scale-110"
+                className="flex-shrink-0 w-32 h-16 flex items-center justify-center transition-transform duration-300 hover:scale-110 hover:z-10"
                 aria-hidden="true"
               >
                 <img
