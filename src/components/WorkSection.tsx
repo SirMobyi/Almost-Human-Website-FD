@@ -4,6 +4,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 import { useSwipeGesture } from "@/hooks/useSwipeGesture";
 import { WORK_VIDEOS } from "@/config/constants";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const WorkSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -68,9 +69,7 @@ const WorkSection = () => {
     <section
       id="work"
       ref={targetRef as React.RefObject<HTMLElement>}
-      className={`py-20 px-6 bg-background transition-opacity duration-700 ${
-        hasIntersected ? "animate-fade-in" : "opacity-0"
-      }`}
+      className="py-20 px-6 bg-background"
     >
       <div className="max-w-7xl mx-auto">
         <div className="backdrop-blur-xl bg-card/30 border border-border/50 rounded-3xl p-8 sm:p-12 shadow-2xl">
@@ -88,6 +87,23 @@ const WorkSection = () => {
             ref={swipeRef}
             className="relative max-w-5xl mx-auto mb-12 touch-pan-y"
           >
+            {/* Navigation Buttons */}
+            <button
+              onClick={prevSlide}
+              className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-14 md:h-14 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              aria-label="Previous video"
+            >
+              <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-white" />
+            </button>
+            
+            <button
+              onClick={nextSlide}
+              className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-14 md:h-14 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              aria-label="Next video"
+            >
+              <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-white" />
+            </button>
+
             <div className="aspect-video bg-black rounded-lg overflow-hidden shadow-2xl">
               {hasIntersected ? (
                 <>
