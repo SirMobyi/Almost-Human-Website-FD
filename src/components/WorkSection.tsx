@@ -158,7 +158,7 @@ const WorkSection = () => {
             onClick={() => window.open('mailto:hello@almosthuman.in', '_blank')}
             className="bg-primary hover:bg-primary/90 text-lg px-8 py-6"
           >
-            contact us
+            Let's Chat
           </Button>
         </div>
       </div>
