@@ -222,12 +222,12 @@ const ContactSection = () => {
               <Button
                 type="submit"
                 size="lg"
-                className="flex-1 bg-primary hover:bg-primary/90 h-12 sm:h-14 text-base sm:text-lg font-semibold"
+                className="flex-1 bg-primary hover:bg-primary/90 h-14 sm:h-14 text-lg sm:text-lg font-bold"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? (
                   <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    <Loader2 className="mr-2 h-5 w-5 animate-spin" />
                     Sending...
                   </>
                 ) : (
@@ -239,7 +239,7 @@ const ContactSection = () => {
                 size="lg"
                 variant="outline"
                 onClick={handleBookCall}
-                className="flex-1 border-primary hover:bg-primary/10 h-12 sm:h-14 text-base sm:text-lg font-semibold"
+                className="flex-1 border-primary hover:bg-primary/10 h-14 sm:h-14 text-lg sm:text-lg font-bold"
                 disabled={isSubmitting}
                 aria-label="Book a call on Instagram"
               >
