@@ -65,7 +65,7 @@ const ServicesSection = () => {
             What Do We Do
           </h2>
           <p className="text-center text-lg text-muted-foreground mb-16">
-            Our range of services includes.
+            Our range of services includes-
           </p>
 
           <div className="space-y-4" role="list">
