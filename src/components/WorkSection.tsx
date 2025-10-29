@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from "react";
-import { Skeleton } from "@/components/ui/skeleton";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 import { useSwipeGesture } from "@/hooks/useSwipeGesture";
 import { WORK_VIDEOS } from "@/config/constants";
@@ -90,9 +89,7 @@ const WorkSection = () => {
               {hasIntersected ? (
                 <>
                   {isLoading && (
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <Skeleton className="w-full h-full" />
-                    </div>
+                    <div className="absolute inset-0 bg-black" />
                   )}
                   <iframe
                     className="w-full h-full"
