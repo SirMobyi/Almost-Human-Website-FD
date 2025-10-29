@@ -1,16 +1,24 @@
 import heroBg from "@/assets/hero-bg.jpg";
+import { useParallax } from "@/hooks/useParallax";
 
 const Hero = () => {
+  const parallaxOffset = useParallax(0.5);
+
   return (
     <header className="relative h-screen w-full flex items-center justify-center overflow-hidden">
-      {/* Background image with overlay */}
+      {/* Background image with parallax overlay */}
       <div className="absolute inset-0" aria-hidden="true">
-        <img
-          src={heroBg}
-          alt="Cinematic grainy gradient background in purple and black tones"
-          className="w-full h-full object-cover"
-          loading="eager"
-        />
+        <div
+          className="absolute inset-0 will-change-transform"
+          style={{ transform: `translate3d(0, ${parallaxOffset}px, 0)` }}
+        >
+          <img
+            src={heroBg}
+            alt="Cinematic grainy gradient background in purple and black tones"
+            className="w-full h-[120vh] object-cover"
+            loading="eager"
+          />
+        </div>
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/60" />
       </div>
 

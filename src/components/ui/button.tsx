@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
-
+import { useRipple } from "@/hooks/useRipple";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
@@ -39,7 +39,37 @@ export interface ButtonProps
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : "button";
-    return <Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props} />;
+    const { ripples, addRipple } = useRipple();
+
+    const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+      if (!asChild) {
+        addRipple(e);
+      }
+      props.onClick?.(e);
+    };
+
+    return (
+      <Comp
+        className={cn(buttonVariants({ variant, size, className }), "relative overflow-hidden")}
+        ref={ref}
+        {...props}
+        onClick={handleClick as any}
+      >
+        {props.children}
+        {!asChild && ripples.map((ripple) => (
+          <span
+            key={ripple.key}
+            className="absolute bg-white/30 rounded-full animate-ripple pointer-events-none"
+            style={{
+              left: ripple.x,
+              top: ripple.y,
+              width: ripple.size,
+              height: ripple.size,
+            }}
+          />
+        ))}
+      </Comp>
+    );
   },
 );
 Button.displayName = "Button";

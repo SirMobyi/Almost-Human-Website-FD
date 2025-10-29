@@ -26,9 +26,9 @@ export const PROJECT_TYPES = [
 
 // Navigation Links
 export const NAV_LINKS = [
-  { id: "work", label: "Works" },
-  { id: "services", label: "Services" },
-  { id: "contact", label: "Contact Us" },
+  { id: "work", label: "Works", href: "#work" },
+  { id: "services", label: "Services", href: "#services" },
+  { id: "contact", label: "Contact Us", href: "#contact" },
 ] as const;
 
 // Video Showcase (YouTube IDs)

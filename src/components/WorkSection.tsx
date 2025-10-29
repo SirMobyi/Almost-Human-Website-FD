@@ -1,14 +1,20 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
+import { useSwipeGesture } from "@/hooks/useSwipeGesture";
 import { WORK_VIDEOS } from "@/config/constants";
 
 const WorkSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const { targetRef, hasIntersected } = useIntersectionObserver();
+  
+  const swipeRef = useSwipeGesture({
+    onSwipeLeft: () => nextSlide(),
+    onSwipeRight: () => prevSlide(),
+  }) as React.RefObject<HTMLDivElement>;
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % WORK_VIDEOS.length);
@@ -67,7 +73,10 @@ const WorkSection = () => {
         </div>
 
         {/* Video Carousel */}
-        <div className="relative max-w-5xl mx-auto mb-12">
+        <div 
+          ref={swipeRef}
+          className="relative max-w-5xl mx-auto mb-12 touch-pan-y"
+        >
           <div className="aspect-video bg-black rounded-lg overflow-hidden shadow-2xl">
             {hasIntersected ? (
               <>

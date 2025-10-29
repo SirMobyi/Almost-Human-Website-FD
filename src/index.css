@@ -108,3 +108,34 @@ All colors MUST be HSL.
   outline: 2px solid hsl(var(--ring));
   outline-offset: 2px;
 }
+
+/* Touch action utilities */
+.touch-pan-y {
+  touch-action: pan-y;
+}
+
+.touch-pan-x {
+  touch-action: pan-x;
+}
+
+.touch-none {
+  touch-action: none;
+}
+
+/* GPU acceleration */
+.transform-gpu {
+  transform: translate3d(0, 0, 0);
+}
+
+.will-change-transform {
+  will-change: transform;
+}
+
+/* Hide default cursor when custom cursor is active */
+body:has(.cursor-custom) {
+  cursor: none;
+}
+
+body:has(.cursor-custom) * {
+  cursor: none !important;
+}
