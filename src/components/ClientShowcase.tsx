@@ -58,7 +58,7 @@ const ClientShowcase = () => {
       />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-12 text-glow-sm">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-12">
           Trusted by Leading Brands
         </h2>
 
