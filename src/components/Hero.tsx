@@ -1,7 +1,10 @@
 import heroBg from "@/assets/hero-bg.png";
+import heroBlur from "@/assets/hero-bg-blur.jpg";
 import { useParallax } from "@/hooks/useParallax";
+import { useState } from "react";
 
 const Hero = () => {
+  const [imageLoaded, setImageLoaded] = useState(false);
   const parallaxOffset = useParallax(0.5);
 
   return (
@@ -12,13 +15,26 @@ const Hero = () => {
           className="absolute inset-0 will-change-transform"
           style={{ transform: `translate3d(0, ${parallaxOffset}px, 0)` }}
         >
+          {/* Blur placeholder - loads instantly */}
+          <img
+            src={heroBlur}
+            alt=""
+            className={`absolute inset-0 w-full h-[110vh] object-cover blur-2xl scale-110 transition-opacity duration-500 ${
+              imageLoaded ? 'opacity-0' : 'opacity-100'
+            }`}
+            loading="eager"
+            aria-hidden="true"
+          />
+          {/* Main hero image */}
           <img
             src={heroBg}
             alt="Cinematic grainy gradient background in purple and black tones"
-            className="w-full h-[120vh] object-cover"
+            className={`w-full h-[110vh] object-cover transition-opacity duration-500 ${
+              imageLoaded ? 'opacity-100' : 'opacity-0'
+            }`}
             loading="eager"
             fetchPriority="high"
-            decoding="async"
+            onLoad={() => setImageLoaded(true)}
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/60" />
