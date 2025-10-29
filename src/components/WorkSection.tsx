@@ -78,7 +78,7 @@ const WorkSection = () => {
               Not Another<br className="sm:hidden" /> AI Studio
             </h2>
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-4xl mx-auto">
-              We don't chase trends. We chase emotion. AlmostHuman is built by creators who believe AI shouldn't replace creativity; it should amplify it.
+              We don't chase trends. We chase emotion. AlmostHuman is built by creators who believe AI shouldn't replace creativity; <span className="whitespace-nowrap">it should amplify it.</span>
             </p>
           </div>
 
