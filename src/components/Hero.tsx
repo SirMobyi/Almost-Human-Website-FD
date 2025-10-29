@@ -25,12 +25,15 @@ const Hero = () => {
             loading="eager"
             aria-hidden="true"
           />
-          {/* Main hero image - responsive loading */}
+          {/* Main hero image - optimized with modern formats */}
           <picture>
             <source
-              srcSet={heroBg}
-              type="image/png"
-              media="(min-width: 1px)"
+              srcSet={heroBg.replace('.png', '.avif')}
+              type="image/avif"
+            />
+            <source
+              srcSet={heroBg.replace('.png', '.webp')}
+              type="image/webp"
             />
             <img
               src={heroBg}
