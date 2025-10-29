@@ -17,6 +17,8 @@ const Hero = () => {
             alt="Cinematic grainy gradient background in purple and black tones"
             className="w-full h-[120vh] object-cover"
             loading="eager"
+            fetchPriority="high"
+            decoding="async"
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/60" />

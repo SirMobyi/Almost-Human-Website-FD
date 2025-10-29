@@ -27,8 +27,8 @@ const AppContent = () => {
   });
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 2000);
-    return () => clearTimeout(timer);
+    // Set loading to false immediately after initial render
+    setIsLoading(false);
   }, []);
 
   return (
