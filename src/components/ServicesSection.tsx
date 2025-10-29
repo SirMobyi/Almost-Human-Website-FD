@@ -63,13 +63,13 @@ const ServicesSection = () => {
   };
 
   return (
-    <section id="services" className="py-20 px-6 bg-gradient-to-b from-background/80 to-background">
+    <section id="services" className="py-12 sm:py-20 px-4 sm:px-6 bg-gradient-to-b from-background/80 to-background">
       <div className="max-w-5xl mx-auto">
-        <div className="backdrop-blur-xl bg-card/30 border border-border/50 rounded-3xl p-8 sm:p-12 shadow-2xl">
-          <h2 className="text-4xl md:text-6xl font-bold text-center mb-4 animate-fade-in">
+        <div className="backdrop-blur-xl bg-card/30 border border-border/50 rounded-3xl p-4 sm:p-8 lg:p-12 shadow-2xl">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold text-center mb-3 sm:mb-4 animate-fade-in">
             What Do We Do
           </h2>
-          <p className="text-center text-lg text-muted-foreground mb-16">
+          <p className="text-center text-base sm:text-lg text-muted-foreground mb-8 sm:mb-12 md:mb-16">
             Our range of services includes-
           </p>
 
@@ -85,23 +85,23 @@ const ServicesSection = () => {
                 >
                   <button
                     onClick={() => toggleService(index)}
-                    className="w-full px-6 py-6 flex justify-between items-center text-left hover:bg-primary/5 transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full px-4 py-4 sm:px-6 sm:py-6 flex justify-between items-center text-left hover:bg-primary/5 transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
                     aria-expanded={expandedIndex === index}
                     aria-controls={`service-content-${index}`}
                   >
-                    <div className="flex items-start gap-4 flex-1">
-                      <div className={`p-3 rounded-lg bg-gradient-blue transition-all duration-300 ${
+                    <div className="flex items-start gap-3 sm:gap-4 flex-1">
+                      <div className={`p-2 sm:p-3 rounded-lg bg-gradient-blue transition-all duration-300 ${
                         expandedIndex === index ? 'scale-110 rotate-3' : ''
                       }`}>
-                        <Icon className="w-6 h-6 text-white" />
+                        <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-2xl md:text-3xl font-bold mb-2">{service.title}</h3>
-                        <p className="text-muted-foreground">{service.description}</p>
+                        <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-1 sm:mb-2">{service.title}</h3>
+                        <p className="text-sm sm:text-base text-muted-foreground">{service.description}</p>
                       </div>
                     </div>
                     <ChevronDown
-                      className={`w-6 h-6 ml-4 transition-transform duration-300 ${
+                      className={`w-5 h-5 sm:w-6 sm:h-6 ml-2 sm:ml-4 transition-transform duration-300 ${
                         expandedIndex === index ? "rotate-180" : ""
                       }`}
                       aria-hidden="true"
@@ -116,8 +116,8 @@ const ServicesSection = () => {
                     role="region"
                     aria-labelledby={`service-title-${index}`}
                   >
-                    <div className="px-6 pb-6 pt-2 bg-gradient-to-br from-primary/10 to-accent/5">
-                      <h4 className="text-lg font-semibold mb-3 text-gradient">Deliverables:</h4>
+                    <div className="px-4 pb-4 pt-2 sm:px-6 sm:pb-6 bg-gradient-to-br from-primary/10 to-accent/5">
+                      <h4 className="text-base sm:text-lg font-semibold mb-3 text-gradient">Deliverables:</h4>
                       <ul className="space-y-2">
                         {service.deliverables.map((item, i) => (
                           <li 
