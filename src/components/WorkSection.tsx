@@ -1,118 +1,165 @@
-import { useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-
-const videos = [
-  { id: 1, title: "Project 1" },
-  { id: 2, title: "Project 2" },
-  { id: 3, title: "Project 3" },
-  { id: 4, title: "Project 4" },
-  { id: 5, title: "Project 5" },
-  { id: 6, title: "Project 6" },
-  { id: 7, title: "Project 7" },
-];
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Skeleton } from "@/components/ui/skeleton";
+import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
+import { WORK_VIDEOS } from "@/config/constants";
 
 const WorkSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+  const { targetRef, hasIntersected } = useIntersectionObserver();
 
   const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % videos.length);
+    setCurrentIndex((prev) => (prev + 1) % WORK_VIDEOS.length);
+    setIsLoading(true);
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + videos.length) % videos.length);
+    setCurrentIndex((prev) => (prev - 1 + WORK_VIDEOS.length) % WORK_VIDEOS.length);
+    setIsLoading(true);
   };
 
   const scrollToContact = () => {
-    const element = document.getElementById("contact");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+    const contactSection = document.getElementById("contact");
+    if (contactSection) {
+      const offset = 80; // Account for fixed header
+      const elementPosition = contactSection.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
     }
   };
 
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") {
+        prevSlide();
+      } else if (e.key === "ArrowRight") {
+        nextSlide();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
+  const currentVideo = WORK_VIDEOS[currentIndex];
+
   return (
-    <section id="work" className="py-20 px-6 bg-gradient-to-b from-background to-background/80">
+    <section
+      id="work"
+      ref={targetRef as React.RefObject<HTMLElement>}
+      className={`py-20 px-6 bg-background transition-opacity duration-700 ${
+        hasIntersected ? "animate-fade-in" : "opacity-0"
+      }`}
+    >
       <div className="max-w-7xl mx-auto">
-        {/* Heading with decorative background */}
-        <div className="text-center mb-8 animate-fade-in">
-          <div className="inline-block relative">
-            <h2 className="text-4xl md:text-6xl font-bold mb-4 relative z-10">
-              Not another AI studio
-            </h2>
-            <div className="absolute inset-0 bg-primary/10 blur-3xl rounded-full" aria-hidden="true" />
-          </div>
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-6xl font-bold mb-4">Our Work</h2>
+          <p className="text-xl text-muted-foreground">
+            Pushing the boundaries of AI filmmaking
+          </p>
         </div>
 
-        {/* Subheading */}
-        <p className="text-center text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto mb-16 leading-relaxed">
-          We don't chase trends or the algorithm. We chase emotion. AlmostHuman is built by
-          creators who believe AI shouldn't replace creativity; it should amplify it. We use AI to
-          tell stories that feel alive, making AI films feel human.
-        </p>
-
-        {/* Video carousel */}
-        <div className="relative" role="region" aria-label="Work showcase carousel">
-          <div className="flex items-center justify-center gap-4">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={prevSlide}
-              className="absolute left-0 z-10 hover:bg-primary/20"
-              aria-label="Previous video"
-            >
-              <ChevronLeft className="h-8 w-8" />
-            </Button>
-
-            <div className="w-full max-w-5xl aspect-video bg-muted/20 backdrop-blur-sm rounded-lg border border-border flex items-center justify-center overflow-hidden">
-              <div className="text-center p-8">
-                <div className="w-16 h-16 mx-auto mb-4 border-2 border-primary rounded-full flex items-center justify-center" aria-hidden="true">
+        {/* Video Carousel */}
+        <div className="relative max-w-5xl mx-auto mb-12">
+          <div className="aspect-video bg-black rounded-lg overflow-hidden shadow-2xl">
+            {hasIntersected ? (
+              <>
+                {isLoading && (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <Skeleton className="w-full h-full" />
+                  </div>
+                )}
+                <iframe
+                  className="w-full h-full"
+                  src={`https://www.youtube.com/embed/${currentVideo.id}?controls=1&modestbranding=1&rel=0`}
+                  title={currentVideo.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  loading="lazy"
+                  onLoad={() => setIsLoading(false)}
+                />
+              </>
+            ) : (
+              <div className="w-full h-full flex items-center justify-center">
+                <div
+                  className="w-20 h-20 border-2 border-primary rounded-full flex items-center justify-center"
+                  aria-hidden="true"
+                >
                   <svg
                     className="w-8 h-8 text-primary"
                     fill="currentColor"
                     viewBox="0 0 20 20"
-                    aria-hidden="true"
                   >
                     <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
                   </svg>
                 </div>
-                <p className="text-muted-foreground" aria-live="polite">Video {currentIndex + 1} of {videos.length}</p>
-                <p className="text-sm text-muted-foreground/60 mt-2">Upload your work videos here</p>
               </div>
-            </div>
-
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={nextSlide}
-              className="absolute right-0 z-10 hover:bg-primary/20"
-              aria-label="Next video"
-            >
-              <ChevronRight className="h-8 w-8" />
-            </Button>
+            )}
           </div>
 
-          {/* Dots indicator */}
-          <div className="flex justify-center gap-2 mt-6">
-            {videos.map((_, index) => (
+          {/* Navigation Buttons */}
+          <Button
+            variant="outline"
+            size="icon"
+            className="absolute left-4 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur-sm border-primary hover:bg-primary/10"
+            onClick={prevSlide}
+            aria-label="Previous video"
+          >
+            <ChevronLeft className="h-6 w-6" />
+          </Button>
+
+          <Button
+            variant="outline"
+            size="icon"
+            className="absolute right-4 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur-sm border-primary hover:bg-primary/10"
+            onClick={nextSlide}
+            aria-label="Next video"
+          >
+            <ChevronRight className="h-6 w-6" />
+          </Button>
+
+          {/* Video Title */}
+          <div className="text-center mt-6">
+            <h3 className="text-2xl font-semibold">{currentVideo.title}</h3>
+          </div>
+
+          {/* Dots Navigation */}
+          <div className="flex justify-center gap-2 mt-6" role="tablist">
+            {WORK_VIDEOS.map((_, index) => (
               <button
                 key={index}
-                onClick={() => setCurrentIndex(index)}
+                onClick={() => {
+                  setCurrentIndex(index);
+                  setIsLoading(true);
+                }}
                 className={`w-2 h-2 rounded-full transition-all ${
-                  index === currentIndex ? "w-8 bg-primary" : "bg-muted-foreground/30"
+                  index === currentIndex
+                    ? "bg-primary w-8"
+                    : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
                 }`}
+                aria-label={`Go to video ${index + 1}`}
+                role="tab"
+                aria-selected={index === currentIndex}
               />
             ))}
           </div>
         </div>
 
-        {/* CTA Button */}
-        <div className="text-center mt-16">
+        {/* CTA */}
+        <div className="text-center">
           <Button
-            onClick={scrollToContact}
             size="lg"
-            className="text-lg px-8 py-6 bg-primary hover:bg-primary/90"
+            onClick={scrollToContact}
+            className="bg-primary hover:bg-primary/90 text-lg px-8 py-6"
           >
-            Contact Us
+            Let's Create Together
           </Button>
         </div>
       </div>
