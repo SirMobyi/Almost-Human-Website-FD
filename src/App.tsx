@@ -10,7 +10,6 @@ import NotFound from "./pages/NotFound";
 import LoadingScreen from "./components/LoadingScreen";
 import ScrollProgressBar from "./components/ScrollProgressBar";
 import CustomCursor from "./components/CustomCursor";
-import BottomNavigation from "./components/BottomNavigation";
 import PullToRefreshIndicator from "./components/PullToRefreshIndicator";
 import { usePullToRefresh } from "./hooks/usePullToRefresh";
 
@@ -48,7 +47,6 @@ const AppContent = () => {
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
-          <BottomNavigation />
         </>
       )}
     </>
