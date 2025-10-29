@@ -132,20 +132,20 @@ const ContactSection = () => {
     <section
       id="contact"
       ref={targetRef as React.RefObject<HTMLElement>}
-      className={`py-20 px-6 bg-gradient-to-b from-background to-background/80 transition-opacity duration-700 ${
+      className={`py-12 sm:py-20 px-4 sm:px-6 bg-gradient-to-b from-background to-background/80 transition-opacity duration-700 ${
         hasIntersected ? "animate-fade-in" : "opacity-0"
       }`}
     >
       <div className="max-w-4xl mx-auto">
-        <div className="backdrop-blur-xl bg-card/30 border border-border/50 rounded-3xl p-8 sm:p-12 shadow-2xl">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-6xl font-bold mb-4">
+        <div className="backdrop-blur-xl bg-card/30 border border-border/50 rounded-3xl p-5 sm:p-8 lg:p-12 shadow-2xl">
+          <div className="text-center mb-6 sm:mb-8 md:mb-12">
+            <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-3 sm:mb-4">
               Let's create something almost human.
             </h2>
-            <p className="text-xl text-muted-foreground">Your imagination made real.</p>
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground">Your imagination made real.</p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6 mb-8" aria-label="Contact form">
+          <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6 mb-6 sm:mb-8" aria-label="Contact form">
             <div>
               <Label htmlFor="name" className="sr-only">Name</Label>
               <Input
@@ -218,7 +218,7 @@ const ContactSection = () => {
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <Button
                 type="submit"
                 size="lg"
@@ -251,8 +251,8 @@ const ContactSection = () => {
       </div>
 
       {/* Footer */}
-      <footer className="mt-20 pt-8 border-t border-border">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+      <footer className="mt-12 sm:mt-16 md:mt-20 pt-6 sm:pt-8 border-t border-border">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="text-muted-foreground text-sm">{SITE_CONFIG.copyright}</div>
 
           <div className="flex gap-6">
