@@ -1,4 +1,4 @@
-import heroBg from "@/assets/hero-bg.jpg";
+import heroBg from "@/assets/hero-bg.png";
 import { useParallax } from "@/hooks/useParallax";
 
 const Hero = () => {
