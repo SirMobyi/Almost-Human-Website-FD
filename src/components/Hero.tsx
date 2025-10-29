@@ -59,7 +59,7 @@ const Hero = () => {
           ALMOSTHUMAN
         </h1>
         <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-foreground/80 font-light max-w-4xl mx-auto min-h-[2.5rem] sm:min-h-[3rem]">
-          {displayedText}<span className="inline-block w-0.5 h-6 sm:h-8 bg-primary ml-1 animate-pulse" />
+          {displayedText}
         </p>
       </div>
 
