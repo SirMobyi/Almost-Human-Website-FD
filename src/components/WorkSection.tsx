@@ -155,10 +155,10 @@ const WorkSection = () => {
         <div className="text-center">
           <Button
             size="lg"
-            onClick={scrollToContact}
+            onClick={() => window.open('mailto:hello@almosthuman.in', '_blank')}
             className="bg-primary hover:bg-primary/90 text-lg px-8 py-6"
           >
-            Let's Create Together
+            contact us
           </Button>
         </div>
       </div>
