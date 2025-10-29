@@ -24,20 +24,41 @@ const CustomCursor = () => {
     return () => document.removeEventListener('mouseover', handleMouseOver);
   }, []);
 
+  useEffect(() => {
+    if (isHidden) return;
+    
+    // Hide default cursor
+    document.body.style.cursor = 'none';
+    const style = document.createElement('style');
+    style.innerHTML = '* { cursor: none !important; }';
+    style.setAttribute('data-cursor-style', 'true');
+    document.head.appendChild(style);
+    
+    return () => {
+      document.body.style.cursor = '';
+      const existingStyle = document.querySelector('[data-cursor-style]');
+      if (existingStyle) {
+        document.head.removeChild(existingStyle);
+      }
+    };
+  }, [isHidden]);
+
   if (isHidden) return null;
 
   return (
     <>
       {/* Arrow pointer with gradient and glow */}
       <motion.div
-        className="fixed top-0 left-0 w-5 h-5 pointer-events-none z-[9999] cursor-glow will-change-transform"
+        className="fixed top-0 left-0 w-5 h-5 pointer-events-none z-[9999] cursor-glow cursor-custom will-change-transform"
         style={{ 
-          x: x - 2.5, 
-          y: y - 2.5,
           clipPath: 'polygon(0 0, 100% 50%, 0 100%, 15% 50%)',
           background: 'linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary) / 0.8) 100%)',
+          display: 'block',
+          visibility: 'visible',
         }}
         animate={{
+          x: x - 2.5,
+          y: y - 2.5,
           scale: isPointer ? 1.3 : 1,
         }}
         transition={{
@@ -52,11 +73,13 @@ const CustomCursor = () => {
       <motion.div
         className={`fixed top-0 left-0 w-8 h-8 rounded-full pointer-events-none z-[9998] will-change-transform ${isPointer ? 'cursor-glow-intense' : 'cursor-glow'}`}
         style={{ 
-          x: x - 16, 
-          y: y - 16,
           background: 'radial-gradient(circle, hsl(var(--primary) / 0.6) 0%, transparent 70%)',
+          display: 'block',
+          visibility: 'visible',
         }}
         animate={{
+          x: x - 16,
+          y: y - 16,
           scale: isPointer ? 1.8 : 1.2,
           opacity: isPointer ? 0.9 : 0.6,
         }}
@@ -71,11 +94,13 @@ const CustomCursor = () => {
       <motion.div
         className="fixed top-0 left-0 w-12 h-12 rounded-full pointer-events-none z-[9997] will-change-transform"
         style={{ 
-          x: x - 24, 
-          y: y - 24,
           background: 'radial-gradient(circle, hsl(var(--primary) / 0.4) 0%, transparent 80%)',
+          display: 'block',
+          visibility: 'visible',
         }}
         animate={{
+          x: x - 24,
+          y: y - 24,
           scale: isPointer ? 2 : 1.5,
           opacity: isPointer ? 0.8 : 0.4,
         }}
@@ -92,11 +117,15 @@ const CustomCursor = () => {
           key={i}
           className="fixed top-0 left-0 rounded-full pointer-events-none z-[9996] opacity-30"
           style={{ 
-            x: x - 3 - i * 2, 
-            y: y - 3 - i * 2,
             width: 6 - i * 2,
             height: 6 - i * 2,
             background: 'linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary) / 0.6) 100%)',
+            display: 'block',
+            visibility: 'visible',
+          }}
+          animate={{
+            x: x - 3 - i * 2,
+            y: y - 3 - i * 2,
           }}
           transition={{
             type: 'spring',
