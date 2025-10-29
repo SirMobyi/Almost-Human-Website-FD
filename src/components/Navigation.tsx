@@ -96,11 +96,7 @@ const Navigation = () => {
             <button
               key={link.id}
               onClick={() => scrollToSection(link.id)}
-              className={`text-4xl md:text-6xl font-bold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-md px-4 ${
-                activeSection === link.id
-                  ? "text-primary scale-110"
-                  : "text-white hover:text-primary hover:scale-105"
-              }`}
+              className="text-4xl md:text-6xl font-bold text-white hover:text-primary transition-all duration-200 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-md px-4"
             >
               {link.label}
             </button>
