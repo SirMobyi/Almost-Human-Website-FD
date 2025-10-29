@@ -11,7 +11,7 @@ interface Service {
 const services: Service[] = [
   {
     title: "AI Commercials",
-    description: "Cinematic brand commercials crafted to go viral",
+    description: "Cinematic brand commercials crafted to go viral.",
     icon: Film,
     deliverables: [
       "Concept Brief",
@@ -33,7 +33,7 @@ const services: Service[] = [
   },
   {
     title: "AI Music Videos",
-    description: "Rhythm-driven visually stunning music videos, powered by AI.",
+    description: "Stunning music videos powered by AI technology.",
     icon: Music,
     deliverables: [
       "Video Concept",
@@ -97,7 +97,7 @@ const ServicesSection = () => {
                       </div>
                       <div className="flex-1">
                         <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-1 sm:mb-2">{service.title}</h3>
-                        <p className="text-sm sm:text-base text-muted-foreground">{service.description}</p>
+                        <p className="text-sm sm:text-base text-muted-foreground text-balance">{service.description}</p>
                       </div>
                     </div>
                     <ChevronDown
