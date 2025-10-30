@@ -1,3 +1,4 @@
+import { useState, useRef } from "react";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 import ClientLogo from "./ClientLogo";
 import amazonLogo from "@/assets/logos/amazon.webp";
@@ -11,48 +12,104 @@ import rapidoLogo from "@/assets/logos/rapido.webp";
 import jeevansathiLogo from "@/assets/logos/jeevansathi.webp";
 
 const clients = [
-  { name: "Amazon", logo: amazonLogo, bgColor: "bg-gradient-to-br from-[#1a4d7a] to-[#0d2d4a]" },
-  { name: "JioHotstar", logo: hotstarLogo, bgColor: "bg-gradient-to-br from-[#1c3a70] to-[#0f2350]" },
-  { name: "Philips", logo: philipsLogo, bgColor: "bg-gradient-to-br from-[#2563eb] to-[#1e40af]" },
-  { name: "Tata", logo: tataLogo, bgColor: "bg-gradient-to-br from-[#1e40af] to-[#1e3a8a]" },
-  { name: "Myntra", logo: myntraLogo, bgColor: "bg-gradient-to-br from-[#ec4899] to-[#be185d]" },
-  { name: "CRED", logo: credLogo, bgColor: "bg-gradient-to-br from-[#a855f7] to-[#7c3aed]" },
-  { name: "IRCTC", logo: irctcLogo, bgColor: "bg-gradient-to-br from-[#ef4444] to-[#dc2626]" },
-  { name: "Rapido", logo: rapidoLogo, bgColor: "bg-gradient-to-br from-[#10b981] to-[#059669]" },
-  { name: "Jeevansathi", logo: jeevansathiLogo, bgColor: "bg-gradient-to-br from-[#f59e0b] to-[#d97706]" },
+  { name: "Amazon", logo: amazonLogo },
+  { name: "JioHotstar", logo: hotstarLogo },
+  { name: "Philips", logo: philipsLogo },
+  { name: "Tata", logo: tataLogo },
+  { name: "Myntra", logo: myntraLogo },
+  { name: "CRED", logo: credLogo },
+  { name: "IRCTC", logo: irctcLogo },
+  { name: "Rapido", logo: rapidoLogo },
+  { name: "Jeevansathi", logo: jeevansathiLogo },
 ];
 
 const ClientShowcase = () => {
+  const [isPaused, setIsPaused] = useState(false);
   const { targetRef, hasIntersected } = useIntersectionObserver();
+  const [spotlight, setSpotlight] = useState({ x: 0, y: 0 });
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (sectionRef.current) {
+      const rect = sectionRef.current.getBoundingClientRect();
+      setSpotlight({
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top,
+      });
+    }
+  };
 
   return (
     <section
       ref={targetRef as React.RefObject<HTMLElement>}
-      className={`py-12 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-background transition-opacity duration-700 ${
+      className={`py-12 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-background transition-opacity duration-700 relative overflow-hidden ${
         hasIntersected ? "animate-fade-in" : "opacity-0"
       }`}
       aria-label="Client showcase"
+      onMouseMove={handleMouseMove}
     >
-      <div className="max-w-7xl mx-auto">
-        <div className="flex items-center justify-center gap-3 mb-12">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center">
-            Our Clients
-          </h2>
-          <span className="text-4xl sm:text-5xl md:text-6xl">✨</span>
-        </div>
+      {/* Spotlight effect */}
+      <div
+        ref={sectionRef}
+        className="absolute inset-0 pointer-events-none opacity-0 hover:opacity-30 transition-opacity duration-500"
+        style={{
+          background: `radial-gradient(600px circle at ${spotlight.x}px ${spotlight.y}px, hsl(var(--primary) / 0.15), transparent 40%)`,
+        }}
+      />
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
-          {clients.map((client, index) => (
-            <ClientLogo
-              key={client.name}
-              name={client.name}
-              logo={client.logo}
-              bgColor={client.bgColor}
-              index={index}
-            />
-          ))}
+      <div className="max-w-7xl mx-auto relative z-10">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-12">
+          Trusted by Leading Brands
+        </h2>
+
+        <div
+          className="relative overflow-visible"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onFocus={() => setIsPaused(true)}
+          onBlur={() => setIsPaused(false)}
+        >
+          <div
+            className={`flex gap-6 md:gap-8 lg:gap-12 ${
+              isPaused ? "[animation-play-state:paused]" : ""
+            }`}
+            style={{
+              animation: "scroll 30s linear infinite",
+              width: "fit-content",
+            }}
+          >
+            {/* First set */}
+            {clients.map((client, index) => (
+              <ClientLogo
+                key={`${client.name}-1`}
+                name={client.name}
+                logo={client.logo}
+                index={index}
+              />
+            ))}
+            {/* Duplicate set for seamless loop */}
+            {clients.map((client, index) => (
+              <ClientLogo
+                key={`${client.name}-2`}
+                name={client.name}
+                logo={client.logo}
+                index={index}
+              />
+            ))}
+          </div>
         </div>
       </div>
+
+      <style>{`
+        @keyframes scroll {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+      `}</style>
     </section>
   );
 };
