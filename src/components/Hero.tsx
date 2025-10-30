@@ -59,9 +59,9 @@ const Hero = () => {
         <img 
           src={logo} 
           alt="AlmostHuman" 
-          className="w-[280px] sm:w-[500px] md:w-[700px] lg:w-[1000px] xl:w-[1200px] 2xl:w-[1400px] h-auto mx-auto mb-4 sm:mb-6 lg:mb-8"
+          className="w-[360px] sm:w-[500px] md:w-[700px] lg:w-[1000px] xl:w-[1200px] 2xl:w-[1400px] h-auto mx-auto mb-6 sm:mb-6 lg:mb-8"
         />
-        <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-foreground/80 font-light max-w-4xl mx-auto min-h-[2.5rem] sm:min-h-[3rem]">
+        <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-foreground/80 font-light max-w-4xl mx-auto min-h-[3rem] sm:min-h-[3.5rem]">
           {displayedText}
         </p>
       </div>
