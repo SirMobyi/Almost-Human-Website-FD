@@ -6,6 +6,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const WorkSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isHovering, setIsHovering] = useState(false);
   const { targetRef, hasIntersected } = useIntersectionObserver();
   
   const swipeRef = useSwipeGesture({
@@ -49,14 +50,16 @@ const WorkSection = () => {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
-  // Auto-scroll carousel every 5 seconds
+  // Auto-scroll carousel every 5 seconds (pause on hover)
   useEffect(() => {
+    if (isHovering) return; // Don't auto-scroll when hovering
+    
     const interval = setInterval(() => {
       nextSlide();
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [currentIndex]);
+  }, [currentIndex, isHovering]);
 
   const currentVideo = WORK_VIDEOS[currentIndex];
 
@@ -81,13 +84,15 @@ const WorkSection = () => {
           <div 
             ref={swipeRef}
             className="relative max-w-5xl mx-auto mb-12 touch-pan-y"
+            onMouseEnter={() => setIsHovering(true)}
+            onMouseLeave={() => setIsHovering(false)}
           >
             <div className="aspect-video bg-black rounded-lg overflow-hidden shadow-2xl">
               {hasIntersected ? (
                 <>
                   <iframe
                     className="w-full h-full"
-                    src={`https://drive.google.com/file/d/${currentVideo.id}/preview`}
+                    src={`https://drive.google.com/file/d/${currentVideo.id}/preview?autoplay=1`}
                     title={currentVideo.title}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
