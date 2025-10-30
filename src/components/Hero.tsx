@@ -1,4 +1,4 @@
-import heroBg from "@/assets/hero-bg.jpg";
+import heroBg from "@/assets/hero-bg.webp";
 import heroBlur from "@/assets/hero-bg-blur.jpg";
 import logo from "@/assets/logo.svg";
 import { useParallax } from "@/hooks/useParallax";
