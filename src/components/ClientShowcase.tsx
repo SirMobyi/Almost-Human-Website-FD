@@ -4,10 +4,10 @@ import ClientLogo from "./ClientLogo";
 import amazonLogo from "@/assets/logos/amazon.webp";
 import hotstarLogo from "@/assets/logos/hotstar.webp";
 import philipsLogo from "@/assets/logos/philips.webp";
-import tataLogo from "@/assets/logos/tata.png";
+import tataLogo from "@/assets/logos/tata.webp";
 import myntraLogo from "@/assets/logos/myntra.webp";
 import credLogo from "@/assets/logos/cred.webp";
-import irctcLogo from "@/assets/logos/irctc.png";
+import irctcLogo from "@/assets/logos/irctc.webp";
 import rapidoLogo from "@/assets/logos/rapido.webp";
 import jeevansathiLogo from "@/assets/logos/jeevansathi.webp";
 
