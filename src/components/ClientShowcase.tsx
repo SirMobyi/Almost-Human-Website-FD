@@ -7,6 +7,9 @@ import rapidoLogo from "@/assets/logos/rapido.png";
 import jeevansathiLogo from "@/assets/logos/jeevansathi.png";
 import philipsLogo from "@/assets/logos/philips-new.png";
 import credLogo from "@/assets/logos/cred-new.png";
+import myntraLogo from "@/assets/logos/myntra.png";
+import primeLogo from "@/assets/logos/prime.png";
+import hotstarLogo from "@/assets/logos/hotstar.png";
 
 const clients = [
   { name: "Tata", logo: tataLogo },
@@ -15,6 +18,9 @@ const clients = [
   { name: "Jeevansathi", logo: jeevansathiLogo },
   { name: "Philips", logo: philipsLogo },
   { name: "CRED", logo: credLogo },
+  { name: "Myntra", logo: myntraLogo },
+  { name: "Amazon Prime Video", logo: primeLogo },
+  { name: "Disney+ Hotstar", logo: hotstarLogo },
 ];
 
 const ClientShowcase = () => {
@@ -49,7 +55,7 @@ const ClientShowcase = () => {
           <div
             className="flex gap-6 md:gap-8 lg:gap-12"
             style={{
-              animation: prefersReducedMotion ? 'none' : "scroll 30s linear infinite",
+              animation: prefersReducedMotion ? 'none' : "scroll 40s linear infinite",
               animationPlayState: isPaused ? 'paused' : 'running',
               width: "fit-content",
             }}
