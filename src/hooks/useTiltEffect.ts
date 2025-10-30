@@ -23,7 +23,7 @@ export const useTiltEffect = <T extends HTMLElement>(maxTilt: number = 15): [Ref
     const rotateX = ((y - centerY) / centerY) * -maxTilt;
     const rotateY = ((x - centerX) / centerX) * maxTilt;
 
-    setTilt({ rotateX, rotateY, scale: 1.05 });
+    setTilt({ rotateX, rotateY, scale: 1.15 });
   };
 
   const handleMouseLeave = () => {
