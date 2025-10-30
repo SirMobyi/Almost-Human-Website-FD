@@ -26,18 +26,6 @@ const clients = [
 const ClientShowcase = () => {
   const [isPaused, setIsPaused] = useState(false);
   const { targetRef, hasIntersected } = useIntersectionObserver();
-  const [spotlight, setSpotlight] = useState({ x: 0, y: 0 });
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (sectionRef.current) {
-      const rect = sectionRef.current.getBoundingClientRect();
-      setSpotlight({
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top,
-      });
-    }
-  };
 
   return (
     <section
@@ -46,16 +34,7 @@ const ClientShowcase = () => {
         hasIntersected ? "animate-fade-in" : "opacity-0"
       }`}
       aria-label="Client showcase"
-      onMouseMove={handleMouseMove}
     >
-      {/* Spotlight effect */}
-      <div
-        ref={sectionRef}
-        className="absolute inset-0 pointer-events-none opacity-0 hover:opacity-30 transition-opacity duration-500"
-        style={{
-          background: `radial-gradient(600px circle at ${spotlight.x}px ${spotlight.y}px, hsl(var(--primary) / 0.15), transparent 40%)`,
-        }}
-      />
 
       <div className="max-w-7xl mx-auto relative z-10">
         <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-12">
