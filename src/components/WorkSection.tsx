@@ -92,11 +92,10 @@ const WorkSection = () => {
                 <>
                   <iframe
                     className="w-full h-full"
-                    src={`https://drive.google.com/file/d/${currentVideo.id}/preview?autoplay=1`}
+                    src={`https://drive.google.com/file/d/${currentVideo.id}/preview`}
                     title={currentVideo.title}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
-                    loading="lazy"
                   />
                 </>
               ) : (
