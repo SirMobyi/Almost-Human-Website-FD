@@ -52,7 +52,7 @@ const ServicesSection = () => {
       <div className="max-w-6xl mx-auto">
         <div className="backdrop-blur-xl bg-card/30 border border-border/50 rounded-3xl p-6 sm:p-8 md:p-10 lg:p-12 shadow-2xl">
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-3 sm:mb-4 animate-fade-in">
-            Made by<br />Almost Human
+            Made by Almost Human
           </h2>
           <p className="text-center text-base sm:text-lg md:text-xl max-w-4xl mx-auto text-muted-foreground mb-8 sm:mb-12 md:mb-16 text-balance">
             We are a next-gen creative studio that blends emotion, design, and AI to craft stories that feel alive.
