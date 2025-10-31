@@ -1,57 +1,42 @@
 import { useState } from "react";
-import { Film, Clapperboard, Music, Sparkles, ChevronDown } from "lucide-react";
+import { Film, Clapperboard, Smartphone, Users, Globe, Sparkles, ChevronDown } from "lucide-react";
 
 interface Service {
   title: string;
   description: string;
-  deliverables: string[];
   icon: React.ElementType;
 }
 
 const services: Service[] = [
   {
-    title: "AI Commercials",
-    description: "Cinematic brand commercials crafted to go viral.",
+    title: "AI Films & Commercials",
+    description: "Cinematic stories and branded films that look human, feel emotional, and spread fast. Each frame powered by AI, every emotion shaped by instinct.",
     icon: Film,
-    deliverables: [
-      "Concept Brief",
-      "Pre-Execution Doc",
-      "AI-Generated Production",
-      "Social & Platform-Ready Edits",
-    ],
   },
   {
-    title: "AI Films",
-    description: "Films to make your brand unforgettable.",
+    title: "AI Animation & Visual Storytelling",
+    description: "From surreal motion to hyperreal visuals, we merge technology and art to build stunning narratives that stay with you.",
     icon: Clapperboard,
-    deliverables: [
-      "Content Strategy",
-      "AI Character & Scene Creation",
-      "AI Cinematic Production",
-      "Editing & Color Finishing",
-    ],
   },
   {
-    title: "AI Music Videos",
-    description: "Stunning music videos powered by AI technology.",
-    icon: Music,
-    deliverables: [
-      "Video Concept",
-      "AI Visual & Motion Design",
-      "Dynamic Editing",
-      "Optimized Cuts for Multiple Platforms",
-    ],
+    title: "Social Media & Format Content",
+    description: "Cultural content built for the feed. AI-crafted short videos, narrative reels, and format-based IPs engineered for attention.",
+    icon: Smartphone,
   },
   {
-    title: "Miscellaneous",
-    description: "Experimental creatives, visual tests, and creative projects.",
+    title: "Character Design & Avatars",
+    description: "Digital beings with soul. From photoreal humans to stylized hybrids, we design avatars that express, move, and speak for your brand.",
+    icon: Users,
+  },
+  {
+    title: "World-Building & Lore Creation",
+    description: "We architect universes. Every color, sound, and story connected through a coherent world system built to evolve and expand.",
+    icon: Globe,
+  },
+  {
+    title: "Experimental & IP Projects",
+    description: "Where art meets algorithms. We create experimental visuals, AI explorations, and scalable narrative IPs that redefine creative frontiers.",
     icon: Sparkles,
-    deliverables: [
-      "Digital Avatars",
-      "Branded IPs",
-      "Concept Visualization",
-      "R&D and Consulting",
-    ],
   },
 ];
 
@@ -67,10 +52,11 @@ const ServicesSection = () => {
       <div className="max-w-6xl mx-auto">
         <div className="backdrop-blur-xl bg-card/30 border border-border/50 rounded-3xl p-6 sm:p-8 md:p-10 lg:p-12 shadow-2xl">
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-3 sm:mb-4 animate-fade-in">
-            What Do We Do
+            Made by Almost Human
           </h2>
-          <p className="text-center text-base sm:text-lg text-muted-foreground mb-8 sm:mb-12 md:mb-16">
-            Our range of services includes-
+          <p className="text-center text-base sm:text-lg md:text-xl max-w-4xl mx-auto text-muted-foreground mb-8 sm:mb-12 md:mb-16 text-balance">
+            We are a next-gen creative studio that blends emotion, design, and AI to craft stories that feel alive.
+            From films and characters to full-scale digital worlds, we build experiences that move hearts and pixels alike.
           </p>
 
           <div className="space-y-4 md:space-y-6" role="list">
@@ -96,8 +82,7 @@ const ServicesSection = () => {
                         <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-1 sm:mb-2">{service.title}</h3>
-                        <p className="text-sm sm:text-base text-muted-foreground text-balance">{service.description}</p>
+                        <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-balance">{service.title}</h3>
                       </div>
                     </div>
                     <ChevronDown
@@ -116,20 +101,10 @@ const ServicesSection = () => {
                     role="region"
                     aria-labelledby={`service-title-${index}`}
                   >
-                    <div className="px-4 pb-4 pt-2 sm:px-6 sm:pb-6 bg-gradient-to-br from-primary/10 to-accent/5">
-                      <h4 className="text-base sm:text-lg font-semibold mb-3 text-gradient">Deliverables:</h4>
-                      <ul className="space-y-2">
-                        {service.deliverables.map((item, i) => (
-                          <li 
-                            key={i} 
-                            className="flex items-start gap-3 animate-fade-in"
-                            style={{ animationDelay: `${i * 0.05}s` }}
-                          >
-                            <span className="text-primary mt-1" aria-hidden="true">•</span>
-                            <span>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
+                    <div className="px-6 pb-6 pt-2 sm:px-8 sm:pb-8 sm:pt-3 md:px-10 md:pb-10 md:pt-4 lg:px-12 lg:pb-12 lg:pt-5 bg-gradient-to-br from-primary/10 to-accent/5">
+                      <p className="text-base sm:text-lg md:text-xl leading-relaxed text-balance animate-fade-in">
+                        {service.description}
+                      </p>
                     </div>
                   </div>
                 </article>
