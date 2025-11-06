@@ -48,7 +48,7 @@ const ClientShowcase = () => {
           <div
             className="flex gap-3 md:gap-4 lg:gap-6"
             style={{
-              animation: prefersReducedMotion ? 'none' : "scroll 40s linear infinite",
+              animation: prefersReducedMotion ? 'none' : "scroll 28s linear infinite",
               width: "fit-content",
             }}
           >
