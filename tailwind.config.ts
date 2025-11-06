@@ -14,8 +14,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Advercase', 'system-ui', 'sans-serif'],
-        advercase: ['Advercase', 'system-ui', 'sans-serif'],
+        sans: ['Mondia', 'system-ui', 'sans-serif'],
+        mondia: ['Mondia', 'system-ui', 'sans-serif'],
+        'mondia-bold': ['MondiaBold', 'system-ui', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
