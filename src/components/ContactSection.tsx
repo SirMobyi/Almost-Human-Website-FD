@@ -132,17 +132,17 @@ const ContactSection = () => {
     <section
       id="contact"
       ref={targetRef as React.RefObject<HTMLElement>}
-      className={`py-12 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background to-background/80 transition-opacity duration-700 ${
+      className={`py-12 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-black transition-opacity duration-700 ${
         hasIntersected ? "animate-fade-in" : "opacity-0"
       }`}
     >
       <div className="max-w-4xl mx-auto">
-        <div className="backdrop-blur-xl bg-card/30 border border-border/50 rounded-3xl p-6 sm:p-8 md:p-10 lg:p-12 shadow-2xl">
+        <div className="backdrop-blur-xl bg-black/50 border border-white/20 rounded-3xl p-6 sm:p-8 md:p-10 lg:p-12 shadow-2xl">
           <div className="text-center mb-6 sm:mb-8 md:mb-12">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4 text-white">
               Let's create something <span className="whitespace-nowrap">almost human.</span>
             </h2>
-            <p className="text-base sm:text-lg md:text-xl text-muted-foreground">Your imagination made real.</p>
+            <p className="text-base sm:text-lg md:text-xl text-white/70">Your imagination made real.</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-5 md:space-y-6 mb-6 sm:mb-8" aria-label="Contact form">
@@ -154,7 +154,7 @@ const ContactSection = () => {
                 placeholder="Name"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="bg-card/50 border-border focus:border-primary"
+                className="bg-black/50 border-white/30 text-white placeholder:text-white/50 focus:border-white"
                 required
                 maxLength={FORM_CONFIG.maxNameLength}
                 disabled={isSubmitting}
@@ -170,7 +170,7 @@ const ContactSection = () => {
                 placeholder="Email"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="bg-card/50 border-border focus:border-primary"
+                className="bg-black/50 border-white/30 text-white placeholder:text-white/50 focus:border-white"
                 required
                 maxLength={FORM_CONFIG.maxEmailLength}
                 disabled={isSubmitting}
@@ -186,10 +186,10 @@ const ContactSection = () => {
                 disabled={isSubmitting}
                 required
               >
-                <SelectTrigger id="projectType" className="bg-card/50 border-border focus:border-primary">
+                <SelectTrigger id="projectType" className="bg-black/50 border-white/30 text-white focus:border-white">
                   <SelectValue placeholder="Select project type" />
                 </SelectTrigger>
-                <SelectContent className="bg-popover border border-border z-50">
+                <SelectContent className="bg-black border border-white/30 text-white z-50">
                   {PROJECT_TYPES.map((type) => (
                     <SelectItem key={type.value} value={type.value}>
                       {type.label}
@@ -207,13 +207,13 @@ const ContactSection = () => {
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 rows={6}
-                className="bg-card/50 border-border focus:border-primary resize-none"
+                className="bg-black/50 border-white/30 text-white placeholder:text-white/50 focus:border-white resize-none"
                 required
                 maxLength={FORM_CONFIG.maxMessageLength}
                 disabled={isSubmitting}
                 name="message"
               />
-              <p className="text-xs text-muted-foreground mt-1 text-right">
+              <p className="text-xs text-white/50 mt-1 text-right">
                 {formData.message.length}/{FORM_CONFIG.maxMessageLength}
               </p>
             </div>
