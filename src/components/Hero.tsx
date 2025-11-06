@@ -50,7 +50,6 @@ const Hero = () => {
             }}
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/70 to-white/85" />
         <GridBackground />
       </div>
 
