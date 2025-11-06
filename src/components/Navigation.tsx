@@ -127,7 +127,7 @@ const Navigation = () => {
             href={`https://mail.google.com/mail/?view=cm&fs=1&to=${SITE_CONFIG.email}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-12 text-xl text-primary hover:text-primary/80 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-md px-2"
+            className="mt-12 text-xl text-white hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-md px-2"
           >
             {SITE_CONFIG.email}
           </a>
