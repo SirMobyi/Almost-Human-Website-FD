@@ -29,7 +29,7 @@ const Hero = () => {
             loop
             muted
             playsInline
-            className={`w-full h-[110vh] object-cover transition-opacity duration-700 ${
+            className={`w-full h-full md:h-[110vh] object-contain md:object-cover transition-opacity duration-700 ${
               videoLoaded ? 'opacity-100' : 'opacity-0'
             }`}
             onLoadedData={() => setVideoLoaded(true)}

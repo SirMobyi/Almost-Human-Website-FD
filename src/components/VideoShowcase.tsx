@@ -35,7 +35,7 @@ const VideoShowcase = () => {
               ref={videoRef}
               src={showcaseReel}
               poster={showcasePoster}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain md:object-cover"
               autoPlay={!prefersReducedMotion}
               loop
               muted
