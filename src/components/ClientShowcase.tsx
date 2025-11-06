@@ -29,14 +29,14 @@ const ClientShowcase = () => {
   return (
     <section
       ref={targetRef as React.RefObject<HTMLElement>}
-      className={`py-12 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 transition-opacity duration-700 relative overflow-hidden ${
+      className={`py-8 md:py-12 lg:py-16 px-4 sm:px-6 bg-black transition-opacity duration-700 relative overflow-hidden ${
         hasIntersected ? "animate-fade-in" : "opacity-0"
       }`}
       aria-label="Client showcase"
     >
 
-      <div className="max-w-7xl mx-auto relative z-10">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-12">
+      <div className="max-w-4xl mx-auto relative z-10">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-8 md:mb-10 lg:mb-12 text-white">
           Trusted by Leading Brands
         </h2>
 
@@ -46,7 +46,7 @@ const ClientShowcase = () => {
           aria-label="Scrolling client logos"
         >
           <div
-            className="flex gap-6 md:gap-8 lg:gap-12"
+            className="flex gap-4 md:gap-6 lg:gap-8"
             style={{
               animation: prefersReducedMotion ? 'none' : "scroll 40s linear infinite",
               width: "fit-content",
