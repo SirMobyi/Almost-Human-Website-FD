@@ -10,10 +10,10 @@ const WorkSection = () => {
     <section
       id="work"
       ref={targetRef as React.RefObject<HTMLElement>}
-      className="py-12 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-background"
+      className="py-12 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 gradient-vintage"
     >
-      <div className="max-w-7xl mx-auto">
-        <div className="backdrop-blur-xl bg-card/30 border border-border/50 rounded-3xl p-6 sm:p-8 md:p-10 lg:p-12 shadow-2xl">
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="bg-transparent p-6 sm:p-8 md:p-10 lg:p-12">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
               Not Another<br className="sm:hidden" /> AI Studio
