@@ -94,9 +94,13 @@ const Navigation = () => {
       {/* Full Screen Menu */}
       <nav
         id="mobile-menu"
-        className={`fixed inset-0 z-40 bg-background/98 backdrop-blur-sm transition-transform duration-300 ease-in-out ${
+        className={`fixed inset-0 z-40 bg-background/95 backdrop-blur-xl transition-transform duration-300 ease-in-out ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
+        style={{
+          backdropFilter: 'blur(20px) saturate(180%)',
+          WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+        }}
         aria-hidden={!isMenuOpen}
       >
         <div className="h-full flex flex-col items-center justify-center gap-8 px-6">
