@@ -23,7 +23,7 @@ export const PROJECT_TYPES = [
   { value: "commercial", label: "Commercial" },
   { value: "film", label: "Film" },
   { value: "music-video", label: "Music Video" },
-  { value: "misc", label: "Miscellaneous" },
+  { value: "misc", label: "Others" },
 ] as const;
 
 // Navigation Links
