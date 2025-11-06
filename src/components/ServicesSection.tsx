@@ -47,37 +47,65 @@ const services: Service[] = [
 
 const ServicesSection = () => {
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
       if (window.innerWidth >= 768) return; // Only on mobile
+      
+      const section = sectionRef.current;
+      if (!section) return;
+
+      const sectionRect = section.getBoundingClientRect();
+      const sectionBottom = sectionRect.bottom;
+      const sectionTop = sectionRect.top;
 
       cardsRef.current.forEach((card, index) => {
         if (!card) return;
         const rect = card.getBoundingClientRect();
         const offset = 80 + index * 60;
         
-        if (rect.top <= offset) {
-          card.style.transform = `translateY(${offset - rect.top}px)`;
+        // Only apply stacking when within section bounds
+        if (sectionTop < window.innerHeight && sectionBottom > 0) {
+          if (rect.top <= offset && rect.top > 0) {
+            card.style.transform = `translateY(${offset - rect.top}px)`;
+            card.style.opacity = '1';
+          } else if (rect.top <= 0) {
+            // Card has scrolled past, reduce opacity
+            const fadeStart = -100;
+            const opacity = Math.max(0, 1 + rect.top / fadeStart);
+            card.style.opacity = opacity.toString();
+          } else {
+            card.style.transform = 'translateY(0)';
+            card.style.opacity = '1';
+          }
+        } else if (sectionBottom <= 0) {
+          // Section has scrolled past completely, hide cards
+          card.style.opacity = '0';
+          card.style.pointerEvents = 'none';
         } else {
+          // Section hasn't reached yet
           card.style.transform = 'translateY(0)';
+          card.style.opacity = '1';
+          card.style.pointerEvents = 'auto';
         }
       });
     };
 
+    handleScroll(); // Initial check
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <section id="services" className="py-12 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background/80 to-background">
+    <section ref={sectionRef} id="services" className="py-12 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background/80 to-background">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-center mb-12 md:mb-16">
           Made by Almost Human
         </h2>
 
         {/* Desktop Bento Grid */}
-        <div className="hidden md:grid md:grid-cols-4 md:auto-rows-[200px] gap-4 lg:gap-6">
+        <div className="hidden md:grid md:grid-cols-4 md:auto-rows-[250px] gap-4 lg:gap-6">
           {services.map((service, index) => (
             <div
               key={index}
@@ -104,7 +132,7 @@ const ServicesSection = () => {
             <div
               key={index}
               ref={(el) => (cardsRef.current[index] = el)}
-              className="sticky rounded-3xl overflow-hidden backdrop-blur-xl bg-card/30 border border-border/50 shadow-2xl"
+              className="sticky rounded-3xl overflow-hidden backdrop-blur-xl bg-card/30 border border-border/50 shadow-2xl transition-opacity duration-300"
               style={{
                 top: `${80 + index * 60}px`,
                 zIndex: services.length - index,
