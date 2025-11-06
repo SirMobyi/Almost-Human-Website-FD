@@ -104,15 +104,14 @@ const Navigation = () => {
             <button
               key={link.id}
               onClick={() => scrollToSection(link.id)}
-              className={`text-4xl md:text-6xl font-bold transition-all duration-200 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-md px-4 text-white hover:text-primary ${
-                activeSection === link.id && 'scale-110 text-primary'
+              className={`text-4xl md:text-6xl font-bold transition-all duration-300 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-xl px-6 py-3 text-white hover:text-primary hover:bg-primary/10 hover:shadow-[0_0_30px_rgba(139,92,246,0.3)] ${
+                activeSection === link.id && 'scale-110 text-primary bg-primary/10 shadow-[0_0_30px_rgba(139,92,246,0.3)]'
               }`}
               style={{ fontWeight: 700 }}
             >
               {link.label}
             </button>
           ))}
-
           <a
             href={`https://mail.google.com/mail/?view=cm&fs=1&to=${SITE_CONFIG.email}`}
             target="_blank"
