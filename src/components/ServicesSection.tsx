@@ -1,4 +1,3 @@
-import { useEffect, useRef } from "react";
 import filmsImg from "@/assets/services/films.png";
 import animationImg from "@/assets/services/animation.png";
 import socialImg from "@/assets/services/social.png";
@@ -46,28 +45,6 @@ const services: Service[] = [
 ];
 
 const ServicesSection = () => {
-  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.innerWidth >= 768) return; // Only on mobile
-
-      cardsRef.current.forEach((card, index) => {
-        if (!card) return;
-        const rect = card.getBoundingClientRect();
-        const offset = 80 + index * 60;
-        
-        if (rect.top <= offset) {
-          card.style.transform = `translateY(${offset - rect.top}px)`;
-        } else {
-          card.style.transform = 'translateY(0)';
-        }
-      });
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   return (
     <section id="services" className="py-12 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background/80 to-background">
@@ -77,14 +54,14 @@ const ServicesSection = () => {
         </h2>
 
         {/* Desktop Bento Grid */}
-        <div className="hidden md:grid md:grid-cols-4 md:auto-rows-[200px] gap-4 lg:gap-6">
+        <div className="hidden md:grid md:grid-cols-4 md:auto-rows-[280px] lg:auto-rows-[320px] gap-4 lg:gap-6">
           {services.map((service, index) => (
             <div
               key={index}
               className={`${service.gridClass} group relative overflow-hidden rounded-3xl backdrop-blur-xl bg-card/30 border border-border/50 hover:border-primary/50 transition-all duration-500 hover:scale-[1.02]`}
             >
-              <div className="absolute inset-0 p-6 lg:p-8 flex flex-col justify-end z-10">
-                <h3 className="text-2xl lg:text-3xl xl:text-4xl font-bold text-balance leading-tight">
+              <div className="absolute inset-0 p-6 lg:p-10 flex flex-col justify-end z-10">
+                <h3 className="text-2xl lg:text-4xl xl:text-5xl font-bold text-balance leading-tight">
                   {service.title}
                 </h3>
               </div>
@@ -98,17 +75,12 @@ const ServicesSection = () => {
           ))}
         </div>
 
-        {/* Mobile Stacking Cards */}
-        <div className="md:hidden relative space-y-8">
+        {/* Mobile Grid */}
+        <div className="md:hidden grid grid-cols-1 gap-6">
           {services.map((service, index) => (
             <div
               key={index}
-              ref={(el) => (cardsRef.current[index] = el)}
-              className="sticky rounded-3xl overflow-hidden backdrop-blur-xl bg-card/30 border border-border/50 shadow-2xl"
-              style={{
-                top: `${80 + index * 60}px`,
-                zIndex: services.length - index,
-              }}
+              className="group relative overflow-hidden rounded-3xl backdrop-blur-xl bg-card/30 border border-border/50 shadow-lg"
             >
               <div className="aspect-[4/3] relative">
                 <div className="absolute inset-0 p-6 flex flex-col justify-end z-10">
