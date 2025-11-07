@@ -49,7 +49,7 @@ const Hero = () => {
           alt="AlmostHuman" 
           className="w-[360px] sm:w-[500px] md:w-[700px] lg:w-[1000px] xl:w-[1200px] 2xl:w-[1400px] h-auto mx-auto mb-6 sm:mb-6 lg:mb-8"
         />
-        <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white font-light max-w-4xl mx-auto min-h-[3rem] sm:min-h-[3.5rem]">
+        <p className="text-xl whitespace-nowrap sm:whitespace-normal sm:text-3xl md:text-4xl lg:text-5xl text-white font-light max-w-4xl mx-auto min-h-[2.5rem] sm:min-h-[3.5rem]">
           {displayedText}
         </p>
       </div>
