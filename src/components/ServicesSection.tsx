@@ -20,17 +20,12 @@ const services: Service[] = [
   {
     title: "AI Animation & Visual Storytelling",
     image: animationImg,
-    gridClass: "md:col-span-1 md:row-span-1",
-  },
-  {
-    title: "Social Media & Format Content",
-    image: socialImg,
-    gridClass: "md:col-span-1 md:row-span-1",
+    gridClass: "md:col-span-2 md:row-span-1",
   },
   {
     title: "Character Design & Avatars",
     image: charactersImg,
-    gridClass: "md:col-span-1 md:row-span-2",
+    gridClass: "md:col-span-2 md:row-span-2",
   },
   {
     title: "World-Building",
@@ -38,9 +33,14 @@ const services: Service[] = [
     gridClass: "md:col-span-2 md:row-span-1",
   },
   {
+    title: "Social Media & Format Content",
+    image: socialImg,
+    gridClass: "md:col-span-2 md:row-span-1",
+  },
+  {
     title: "Experimental & IP Projects",
     image: experimentalImg,
-    gridClass: "md:col-span-1 md:row-span-1",
+    gridClass: "md:col-span-2 md:row-span-1",
   },
 ];
 
@@ -60,12 +60,12 @@ const ServicesSection = () => {
               key={index}
               className={`${service.gridClass} group relative overflow-hidden rounded-3xl backdrop-blur-xl bg-card/30 border border-border/50 hover:border-primary/50 transition-all duration-500 hover:scale-[1.02]`}
             >
-              <div className="absolute inset-0 p-6 lg:p-10 flex flex-col justify-end z-10">
+              <div className="absolute inset-0 p-6 lg:p-10 flex flex-col justify-start z-10">
                 <h3 className="text-2xl lg:text-4xl xl:text-5xl font-bold text-balance leading-tight">
                   {service.title}
                 </h3>
               </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/50 to-transparent z-[5]" />
+              <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/50 to-transparent z-[5]" />
               <img
                 src={service.image}
                 alt={service.title}
