@@ -4,7 +4,6 @@ import socialImg from "@/assets/services/social.png";
 import charactersImg from "@/assets/services/characters.png";
 import worldsImg from "@/assets/services/worlds.png";
 import experimentalImg from "@/assets/services/experimental.png";
-import ScrollStack, { ScrollStackItem } from "@/components/ScrollStack";
 
 interface Service {
   title: string;
@@ -76,29 +75,28 @@ const ServicesSection = () => {
           ))}
         </div>
 
-        {/* Mobile Stack */}
-        <div className="md:hidden">
-          <ScrollStack>
-            {services.map((service, index) => (
-              <ScrollStackItem key={index}>
-                <div className="group relative overflow-hidden rounded-3xl backdrop-blur-xl bg-card/30 border border-border/50 shadow-lg mx-4">
-                  <div className="aspect-[4/3] relative">
-                    <div className="absolute inset-0 p-6 flex flex-col justify-start z-10">
-                      <h3 className="text-2xl sm:text-3xl font-bold text-balance leading-tight">
-                        {service.title}
-                      </h3>
-                    </div>
-                    <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/50 to-transparent z-[5]" />
-                    <img
-                      src={service.image}
-                      alt={service.title}
-                      className="absolute inset-0 w-full h-full object-cover"
-                    />
-                  </div>
+        {/* Mobile Grid */}
+        <div className="md:hidden grid grid-cols-1 gap-6">
+          {services.map((service, index) => (
+            <div
+              key={index}
+              className="group relative overflow-hidden rounded-3xl backdrop-blur-xl bg-card/30 border border-border/50 shadow-lg"
+            >
+              <div className="aspect-[4/3] relative">
+                <div className="absolute inset-0 p-6 flex flex-col justify-start z-10">
+                  <h3 className="text-2xl sm:text-3xl font-bold text-balance leading-tight">
+                    {service.title}
+                  </h3>
                 </div>
-              </ScrollStackItem>
-            ))}
-          </ScrollStack>
+                <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/50 to-transparent z-[5]" />
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
