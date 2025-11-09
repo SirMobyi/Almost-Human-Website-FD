@@ -27,7 +27,7 @@ const ClientShowcase = () => {
   return (
     <section
       ref={targetRef as React.RefObject<HTMLElement>}
-      className={`py-8 md:py-12 lg:py-16 px-4 sm:px-6 bg-black transition-opacity duration-700 relative overflow-hidden ${
+      className={`py-6 md:py-8 lg:py-10 px-4 sm:px-6 bg-black transition-opacity duration-700 relative overflow-hidden ${
         hasIntersected ? "animate-fade-in" : "opacity-0"
       }`}
       aria-label="Client showcase"
@@ -46,7 +46,7 @@ const ClientShowcase = () => {
           <div
             className="inline-flex gap-4 md:gap-6 lg:gap-8"
             style={{
-              animation: prefersReducedMotion ? 'none' : "scroll 10s linear infinite",
+              animation: prefersReducedMotion ? 'none' : "scroll 20s linear infinite",
             }}
           >
             {/* First set */}
