@@ -70,7 +70,7 @@ All colors MUST be HSL.
     --gradient-overlay: linear-gradient(180deg, transparent 0%, hsl(0 0% 100% / 0.8) 100%);
     --gradient-blue: linear-gradient(135deg, hsl(236 42% 60%) 0%, hsl(220 90% 50%) 100%);
     --gradient-pink: linear-gradient(135deg, hsl(236 42% 60%) 0%, hsl(330 85% 55%) 100%);
-    --gradient-vintage: linear-gradient(135deg, hsl(40 60% 92%) 0%, hsl(35 45% 85%) 50%, hsl(40 55% 88%) 100%);
+    --gradient-vintage: linear-gradient(135deg, hsl(40 30% 96%) 0%, hsl(35 25% 94%) 50%, hsl(40 28% 95%) 100%);
     
     /* Grain texture - Lighter for white background */
     --grain-opacity: 0.03;
