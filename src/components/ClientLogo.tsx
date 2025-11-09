@@ -15,7 +15,7 @@ const ClientLogo = ({ name, logo, index, scale = 1 }: ClientLogoProps) => {
       ref={ref}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="flex-shrink-0 w-[30%] h-20 md:w-[22%] md:h-24 lg:w-[17%] lg:h-32 flex items-center justify-center transition-all duration-300 hover:z-10 rounded-2xl overflow-hidden"
+      className="flex-shrink-0 w-[120px] h-[80px] sm:w-[140px] sm:h-[90px] md:w-[160px] md:h-[100px] lg:w-[180px] lg:h-[110px] flex items-center justify-center transition-all duration-300 hover:z-10 rounded-2xl overflow-hidden px-4 md:px-6"
       style={{
         transform: `perspective(1000px) rotateX(${tilt.rotateX}deg) rotateY(${tilt.rotateY}deg) scale(${tilt.scale * scale})`,
         transformStyle: 'preserve-3d',
@@ -26,7 +26,7 @@ const ClientLogo = ({ name, logo, index, scale = 1 }: ClientLogoProps) => {
       <img
         src={logo}
         alt={`${name} logo`}
-        className="w-full h-full object-contain filter brightness-100 hover:brightness-125 transition-all px-2 md:px-3 lg:px-4"
+        className="w-full h-full object-contain filter brightness-100 hover:brightness-125 transition-all"
         loading="lazy"
         onError={(e) => {
           const target = e.target as HTMLImageElement;

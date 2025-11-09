@@ -10,14 +10,14 @@ import myntraLogo from "@/assets/logos/myntra.svg";
 import jiohotstarLogo from "@/assets/logos/jiohotstar.svg";
 
 const clients = [
-  { name: "Tata", logo: tataLogo },
-  { name: "IRCTC", logo: irctcLogo },
-  { name: "Rapido", logo: rapidoLogo },
-  { name: "Jeevansathi", logo: jeevansathiLogo },
-  { name: "Philips", logo: philipsLogo },
-  { name: "CRED", logo: credLogo },
-  { name: "Myntra", logo: myntraLogo },
-  { name: "JioHotstar", logo: jiohotstarLogo },
+  { name: "Tata", logo: tataLogo, scale: 0.7 },
+  { name: "IRCTC", logo: irctcLogo, scale: 0.5 },
+  { name: "Rapido", logo: rapidoLogo, scale: 0.55 },
+  { name: "Jeevansathi", logo: jeevansathiLogo, scale: 0.65 },
+  { name: "Philips", logo: philipsLogo, scale: 0.5 },
+  { name: "CRED", logo: credLogo, scale: 0.85 },
+  { name: "Myntra", logo: myntraLogo, scale: 0.6 },
+  { name: "JioHotstar", logo: jiohotstarLogo, scale: 0.55 },
 ];
 
 const ClientShowcase = () => {
@@ -56,6 +56,7 @@ const ClientShowcase = () => {
                 name={client.name}
                 logo={client.logo}
                 index={index}
+                scale={client.scale}
               />
             ))}
             {/* Duplicate set for seamless loop */}
@@ -65,6 +66,7 @@ const ClientShowcase = () => {
                 name={client.name}
                 logo={client.logo}
                 index={index}
+                scale={client.scale}
               />
             ))}
           </div>
