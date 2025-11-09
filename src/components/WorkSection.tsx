@@ -18,7 +18,7 @@ const WorkSection = () => {
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
               Not Another<br className="sm:hidden" /> AI Studio
             </h2>
-            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-muted-foreground max-w-4xl mx-auto">
+            <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-muted-foreground max-w-4xl mx-auto">
               We don't chase trends. We chase emotion. AlmostHuman is built by creators who believe AI shouldn't replace creativity; <span className="whitespace-nowrap">it should amplify it.</span>
             </p>
           </div>
