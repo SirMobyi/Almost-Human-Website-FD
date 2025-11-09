@@ -60,12 +60,12 @@ const ServicesSection = () => {
               key={index}
               className={`${service.gridClass} group relative overflow-hidden rounded-3xl backdrop-blur-xl bg-card/30 border border-border/50 hover:border-primary/50 transition-all duration-500 hover:scale-[1.02]`}
             >
-              <div className="absolute inset-0 p-6 lg:p-10 flex flex-col justify-start z-10">
+              <div className="absolute inset-0 p-6 lg:p-10 flex flex-col justify-start z-10 transition-opacity duration-500 group-hover:opacity-0">
                 <h3 className="text-2xl lg:text-4xl xl:text-5xl font-bold text-balance leading-tight text-gray-100">
                   {service.title}
                 </h3>
               </div>
-              <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/50 to-transparent z-[5]" />
+              <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-transparent z-[5] transition-opacity duration-500 group-hover:opacity-0" />
               <img
                 src={service.image}
                 alt={service.title}
@@ -83,12 +83,12 @@ const ServicesSection = () => {
               className="group relative overflow-hidden rounded-3xl backdrop-blur-xl bg-card/30 border border-border/50 shadow-lg"
             >
               <div className="aspect-[4/3] relative">
-                <div className="absolute inset-0 p-6 flex flex-col justify-start z-10">
+                <div className="absolute inset-0 p-6 flex flex-col justify-start z-10 transition-opacity duration-500 group-hover:opacity-0">
                   <h3 className="text-2xl sm:text-3xl font-bold text-balance leading-tight text-gray-100">
                     {service.title}
                   </h3>
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/50 to-transparent z-[5]" />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-transparent z-[5] transition-opacity duration-500 group-hover:opacity-0" />
                 <img
                   src={service.image}
                   alt={service.title}
