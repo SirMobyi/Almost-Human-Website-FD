@@ -5,9 +5,12 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
   type CarouselApi,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 const WorkSection = () => {
   const [playingVideo, setPlayingVideo] = useState<number | null>(null);
@@ -141,24 +144,14 @@ const WorkSection = () => {
               </CarouselContent>
             </Carousel>
 
-            {/* Navigation Dots */}
-            <div className="flex justify-center gap-1.5 md:gap-2 mt-6 md:mt-8">
-              {WORK_VIDEOS.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => api?.scrollTo(index)}
-                  className={`h-4 w-4 md:h-6 md:w-6 rounded-full transition-all flex items-center justify-center ${
-                    index === current
-                      ? "bg-primary"
-                      : "bg-transparent hover:bg-muted-foreground/20"
-                  }`}
-                  aria-label={`Go to slide ${index + 1}`}
-                >
-                  <span className={`rounded-full transition-all ${
-                    index === current ? "h-2 w-6 md:h-3 md:w-10 bg-primary" : "h-2 w-2 md:h-3 md:w-3 bg-muted-foreground/40"
-                  }`} />
-                </button>
-              ))}
+            {/* Navigation Buttons */}
+            <div className="flex justify-center gap-4 md:gap-6 lg:gap-8 mt-6 md:mt-8">
+              <CarouselPrevious className="relative static translate-y-0 h-10 w-10 md:h-12 md:w-12 lg:h-14 lg:w-14 rounded-full bg-background/80 border-2 border-border hover:bg-background hover:scale-110 transition-all disabled:opacity-30 disabled:hover:scale-100">
+                <ArrowLeft className="h-5 w-5 md:h-6 md:w-6" />
+              </CarouselPrevious>
+              <CarouselNext className="relative static translate-y-0 h-10 w-10 md:h-12 md:w-12 lg:h-14 lg:w-14 rounded-full bg-background/80 border-2 border-border hover:bg-background hover:scale-110 transition-all disabled:opacity-30 disabled:hover:scale-100">
+                <ArrowRight className="h-5 w-5 md:h-6 md:w-6" />
+              </CarouselNext>
             </div>
           </div>
         </div>
