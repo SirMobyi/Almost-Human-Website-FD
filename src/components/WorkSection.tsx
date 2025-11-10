@@ -16,7 +16,7 @@ const WorkSection = () => {
   const { targetRef, hasIntersected } = useIntersectionObserver();
   
   const autoplayPlugin = useRef(
-    Autoplay({ delay: 3000, stopOnInteraction: false })
+    Autoplay({ delay: 2000, stopOnInteraction: false })
   );
 
   useEffect(() => {
@@ -64,15 +64,16 @@ const WorkSection = () => {
               plugins={[autoplayPlugin.current]}
               className="w-full"
               opts={{
-                align: "start",
+                align: "center",
                 loop: true,
+                containScroll: false,
               }}
             >
               <CarouselContent className="-ml-4">
                 {WORK_VIDEOS.map((video, index) => (
                   <CarouselItem
                     key={video.id}
-                    className="pl-4"
+                    className="pl-4 basis-[85%] md:basis-[90%]"
                     onMouseEnter={() => handleVideoHover(index, true)}
                     onMouseLeave={() => handleVideoHover(index, false)}
                   >
