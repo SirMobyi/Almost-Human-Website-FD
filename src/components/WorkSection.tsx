@@ -94,7 +94,11 @@ const WorkSection = () => {
                         {playingVideo === index ? (
                           <iframe
                             className="w-full h-full"
-                            src={`https://drive.google.com/file/d/${video.id}/preview`}
+                            src={
+                              video.type === "youtube"
+                                ? `https://www.youtube-nocookie.com/embed/${video.id}?autoplay=1&rel=0`
+                                : `https://drive.google.com/file/d/${video.id}/preview`
+                            }
                             title={video.title}
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowFullScreen
@@ -102,7 +106,11 @@ const WorkSection = () => {
                         ) : (
                           <>
                             <img
-                              src={`https://drive.google.com/thumbnail?id=${video.id}&sz=w1920`}
+                              src={
+                                video.type === "youtube"
+                                  ? `https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`
+                                  : `https://drive.google.com/thumbnail?id=${video.id}&sz=w1920`
+                              }
                               alt={video.title}
                               className="w-full h-full object-cover"
                               loading="lazy"

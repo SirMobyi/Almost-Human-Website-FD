@@ -39,12 +39,12 @@ export const SHOWCASE_VIDEO = {
   title: "Our Showreel",
 } as const;
 
-// Work Videos (Google Drive IDs)
+// Work Videos (Google Drive IDs or YouTube IDs)
 export const WORK_VIDEOS = [
-  { id: "1XFMu6hrZalEyNbP9WiOz3F7sIO4biRRx", title: "Jeevansathi", description: "Branding, Web Design and Development" },
-  { id: "1zsST6C9bDywLDOWCn1QvulTlGex--IZ4", title: "Myntra", description: "Branding, Web Design and Development" },
-  { id: "1CnfZcjIhRJABJalE6Y_F0-di4cgTOP9M", title: "Philips", description: "Branding, Web Design and Development" },
-  { id: "1YUIaVMJVtkwBUqXm_EFJmWhbkkBKtPhj", title: "Tata", description: "Branding, Web Design and Development" },
+  { id: "1XFMu6hrZalEyNbP9WiOz3F7sIO4biRRx", title: "Jeevansathi", description: "Branding, Web Design and Development", type: "drive" },
+  { id: "1zsST6C9bDywLDOWCn1QvulTlGex--IZ4", title: "Myntra", description: "Branding, Web Design and Development", type: "drive" },
+  { id: "1CnfZcjIhRJABJalE6Y_F0-di4cgTOP9M", title: "Philips", description: "Branding, Web Design and Development", type: "drive" },
+  { id: "SVmIzkThDh0", title: "Tata", description: "Branding, Web Design and Development", type: "youtube" },
 ] as const;
 
 // Personal Projects Videos (Google Drive IDs)
