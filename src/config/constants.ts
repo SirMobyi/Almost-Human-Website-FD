@@ -46,3 +46,11 @@ export const WORK_VIDEOS = [
   { id: "1CnfZcjIhRJABJalE6Y_F0-di4cgTOP9M", title: "Philips", description: "Branding, Web Design and Development" },
   { id: "1YUIaVMJVtkwBUqXm_EFJmWhbkkBKtPhj", title: "Tata", description: "Branding, Web Design and Development" },
 ] as const;
+
+// Personal Projects Videos (Google Drive IDs)
+export const PERSONAL_PROJECTS_VIDEOS = [
+  { id: "1Qje_a46U-HITm3yDUMN4wYEGPnzR_cup", title: "Invisible" },
+  { id: "1aubmPIP4MoMcGIsRrKQdcPsQFcekxalY", title: "Memories" },
+  { id: "129QspelqbVprRiBo8ZtiFCl2520Sy53D", title: "Bob & Me" },
+  { id: "1VhhsHuGfIQ0IrtpEOLjqzZzmPobLZH91", title: "Born" },
+] as const;
