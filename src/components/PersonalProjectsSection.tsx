@@ -26,6 +26,14 @@ const PersonalProjectsSection = () => {
   const handleVideoClick = (index: number) => {
     setPlayingVideo(index);
     autoplayPlugin.current.stop();
+    // Prevent carousel from dragging when video is playing
+    if (api) {
+      api.on('pointerDown', (emblaApi) => {
+        if (playingVideo !== null) {
+          emblaApi.reInit({ watchDrag: false });
+        }
+      });
+    }
   };
   return <section id="personal-projects" ref={targetRef as React.RefObject<HTMLElement>} className="pt-6 md:pt-8 lg:pt-10 pb-12 md:pb-16 lg:pb-20 px-4 sm:px-6 lg:px-8 gradient-vintage">
       <div className="max-w-7xl mx-auto relative z-10">
@@ -39,12 +47,13 @@ const PersonalProjectsSection = () => {
             <Carousel setApi={setApi} plugins={[autoplayPlugin.current]} className="w-full" opts={{
             align: "center",
             loop: true,
-            containScroll: false
+            containScroll: false,
+            watchDrag: playingVideo === null
           }}>
               <CarouselContent className="-ml-4">
-                {PERSONAL_PROJECTS_VIDEOS.map((video, index) => <CarouselItem key={video.id} className="pl-4 basis-[85%] md:basis-[90%]">
+                {PERSONAL_PROJECTS_VIDEOS.map((video, index) => <CarouselItem key={video.id} className={`pl-4 basis-[85%] md:basis-[90%] ${playingVideo === index ? 'pointer-events-auto' : ''}`}>
                     <div className="group">
-                      <div className="aspect-video bg-black rounded-lg overflow-hidden relative mb-3">
+                      <div className={`aspect-video bg-black rounded-lg overflow-hidden relative mb-3 ${playingVideo === index ? 'z-50' : ''}`}>
                         {playingVideo === index ? <iframe className="w-full h-full" src={`https://drive.google.com/file/d/${video.id}/preview`} title={video.title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen /> : <>
                             <img src={`https://drive.google.com/thumbnail?id=${video.id}&sz=w1920`} alt={video.title} className="w-full h-full object-cover" loading="lazy" />
                             <button onClick={() => handleVideoClick(index)} className="absolute inset-0 flex items-center justify-center bg-black/20 hover:bg-black/40 transition-all cursor-pointer group" aria-label={`Play ${video.title}`}>

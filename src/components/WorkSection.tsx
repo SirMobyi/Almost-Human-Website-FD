@@ -33,6 +33,14 @@ const WorkSection = () => {
   const handleVideoClick = (index: number) => {
     setPlayingVideo(index);
     autoplayPlugin.current.stop();
+    // Prevent carousel from dragging when video is playing
+    if (api) {
+      api.on('pointerDown', (emblaApi) => {
+        if (playingVideo !== null) {
+          emblaApi.reInit({ watchDrag: false });
+        }
+      });
+    }
   };
 
   return (
@@ -62,16 +70,17 @@ const WorkSection = () => {
                 align: "center",
                 loop: true,
                 containScroll: false,
+                watchDrag: playingVideo === null,
               }}
             >
               <CarouselContent className="-ml-4">
                 {WORK_VIDEOS.map((video, index) => (
                   <CarouselItem
                     key={video.id}
-                    className="pl-4 basis-[85%] md:basis-[90%]"
+                    className={`pl-4 basis-[85%] md:basis-[90%] ${playingVideo === index ? 'pointer-events-auto' : ''}`}
                   >
                     <div className="group">
-                      <div className="aspect-video bg-black rounded-lg overflow-hidden relative mb-3">
+                      <div className={`aspect-video bg-black rounded-lg overflow-hidden relative mb-3 ${playingVideo === index ? 'z-50' : ''}`}>
                         {playingVideo === index ? (
                           <iframe
                             className="w-full h-full"
