@@ -29,33 +29,28 @@ const VideoShowcase = () => {
       aria-label="Video showreel"
     >
       <div className="absolute inset-0">
-        {hasIntersected && (
-          <>
-            <video
-              ref={videoRef}
-              src={showcaseReel}
-              poster={showcasePoster}
-              className="w-full h-full object-cover"
-              autoPlay={!prefersReducedMotion}
-              loop
-              muted
-              playsInline
-              preload="metadata"
-              aria-label="AlmostHuman Showreel Video"
-              onLoadedData={() => setIsLoading(false)}
-              onCanPlayThrough={() => setIsLoading(false)}
-              onWaiting={() => setIsBuffering(true)}
-              onPlaying={() => setIsBuffering(false)}
-            />
-            {(isLoading || isBuffering) && (
-              <div className="absolute inset-0 bg-black/50 flex items-center justify-center backdrop-blur-sm">
-                <div className="flex flex-col items-center gap-3">
-                  <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary" />
-                  <p className="text-sm text-muted-foreground">Loading video...</p>
-                </div>
-              </div>
-            )}
-          </>
+        <video
+          ref={videoRef}
+          src={showcaseReel}
+          poster={showcasePoster}
+          className="w-full h-full object-cover"
+          loop
+          muted
+          playsInline
+          preload="auto"
+          aria-label="AlmostHuman Showreel Video"
+          onLoadedData={() => setIsLoading(false)}
+          onCanPlayThrough={() => setIsLoading(false)}
+          onWaiting={() => setIsBuffering(true)}
+          onPlaying={() => setIsBuffering(false)}
+        />
+        {(isLoading || isBuffering) && (
+          <div className="absolute inset-0 bg-black/50 flex items-center justify-center backdrop-blur-sm">
+            <div className="flex flex-col items-center gap-3">
+              <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary" />
+              <p className="text-sm text-muted-foreground">Loading video...</p>
+            </div>
+          </div>
         )}
       </div>
     </section>
