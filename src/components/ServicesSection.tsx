@@ -1,7 +1,7 @@
 import filmsImg from "@/assets/services/films.png";
 import animationImg from "@/assets/services/animation.png";
 import socialImg from "@/assets/services/social.png";
-import charactersImg from "@/assets/services/character-design.png";
+import charactersImg from "@/assets/services/character-design-new.png";
 import worldsImg from "@/assets/services/worlds.png";
 import experimentalImg from "@/assets/services/experimental.png";
 
