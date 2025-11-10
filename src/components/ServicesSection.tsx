@@ -74,7 +74,11 @@ const ServicesSection = () => {
           {services.map((service, index) => <div key={index} className={`${service.gridClass} group relative overflow-hidden rounded-3xl backdrop-blur-xl bg-card/30 border border-border/50 hover:border-primary/50 transition-all duration-500 hover:scale-[1.02]`} onMouseEnter={() => setHoveredIndex(index)} onMouseLeave={() => setHoveredIndex(null)}>
               <div className="absolute inset-0 p-6 lg:p-10 flex flex-col justify-start z-10">
                 <h3 className="text-2xl lg:text-4xl xl:text-5xl font-bold font-just-sans text-balance leading-tight text-gray-100">
-                  {service.title}
+                  {service.title === "Character Design & Avatars" ? (
+                    <><span className="whitespace-nowrap">Character Design</span> & Avatars</>
+                  ) : (
+                    service.title
+                  )}
                 </h3>
               </div>
               <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-transparent z-[5]" />
@@ -89,7 +93,11 @@ const ServicesSection = () => {
               <div className="aspect-[4/3] relative">
                 <div className="absolute inset-0 p-6 flex flex-col justify-start z-10">
                   <h3 className="text-2xl sm:text-3xl font-bold font-just-sans text-balance leading-tight text-gray-100">
-                    {service.title}
+                    {service.title === "Character Design & Avatars" ? (
+                      <><span className="whitespace-nowrap">Character Design</span> & Avatars</>
+                    ) : (
+                      service.title
+                    )}
                   </h3>
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-transparent z-[5]" />
