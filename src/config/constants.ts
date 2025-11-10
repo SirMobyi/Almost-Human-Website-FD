@@ -45,4 +45,7 @@ export const WORK_VIDEOS = [
   { id: "1zsST6C9bDywLDOWCn1QvulTlGex--IZ4", title: "Myntra", description: "Branding, Web Design and Development" },
   { id: "1CnfZcjIhRJABJalE6Y_F0-di4cgTOP9M", title: "Philips", description: "Branding, Web Design and Development" },
   { id: "1YUIaVMJVtkwBUqXm_EFJmWhbkkBKtPhj", title: "Tata", description: "Branding, Web Design and Development" },
+  { id: "1Qje_a46U-HITm3yDUMN4wYEGPnzR_cup", title: "Rapido", description: "Branding, Web Design and Development" },
+  { id: "1aubmPIP4MoMcGIsRrKQdcPsQFcekxalY", title: "Cred", description: "Branding, Web Design and Development" },
+  { id: "129QspelqbVprRiBo8ZtiFCl2520Sy53D", title: "IRCTC", description: "Branding, Web Design and Development" },
 ] as const;
