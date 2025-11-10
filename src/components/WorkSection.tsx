@@ -10,7 +10,6 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
-import { ArrowLeft, ArrowRight } from "lucide-react";
 
 const WorkSection = () => {
   const [playingVideo, setPlayingVideo] = useState<number | null>(null);
@@ -60,7 +59,7 @@ const WorkSection = () => {
     <section
       id="work"
       ref={targetRef as React.RefObject<HTMLElement>}
-      className="pt-12 md:pt-16 lg:pt-20 pb-6 md:pb-8 lg:pb-10 px-4 sm:px-6 lg:px-8 gradient-vintage"
+      className="pt-12 md:pt-16 lg:pt-20 pb-3 md:pb-8 lg:pb-10 px-4 sm:px-6 lg:px-8 gradient-vintage"
     >
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="bg-transparent p-4 sm:p-6 md:p-8">
@@ -120,11 +119,11 @@ const WorkSection = () => {
                             />
                             <button
                               onClick={() => handleVideoClick(index)}
-                              className="absolute inset-0 flex items-center justify-center bg-black/20 hover:bg-black/40 transition-all cursor-pointer group"
+                              className="absolute inset-0 flex items-center justify-center bg-black/20 hover:bg-black/40 transition-colors cursor-pointer group"
                               aria-label={`Play ${video.title}`}
                             >
                               <svg
-                                className="w-16 h-16 md:w-20 md:h-20 text-white group-hover:text-primary transition-all group-hover:scale-110 drop-shadow-lg"
+                                className="w-16 h-16 md:w-20 md:h-20 text-white group-hover:text-primary transition-colors drop-shadow-lg"
                                 fill="currentColor"
                                 viewBox="0 0 20 20"
                               >
@@ -145,12 +144,9 @@ const WorkSection = () => {
               
               {/* Navigation Buttons */}
               <div className="flex justify-center gap-4 md:gap-6 lg:gap-8 mt-6 md:mt-8">
-                <CarouselPrevious className="relative static translate-y-0 h-10 w-10 md:h-12 md:w-12 lg:h-14 lg:w-14 rounded-full bg-background border-2 border-border hover:border-primary transition-colors disabled:opacity-30 disabled:cursor-not-allowed">
-                  <ArrowLeft className="h-5 w-5 md:h-6 md:w-6 text-foreground" strokeWidth={2.5} />
-                </CarouselPrevious>
-                <CarouselNext className="relative static translate-y-0 h-10 w-10 md:h-12 md:w-12 lg:h-14 lg:w-14 rounded-full bg-background border-2 border-border hover:border-primary transition-colors disabled:opacity-30 disabled:cursor-not-allowed">
-                  <ArrowRight className="h-5 w-5 md:h-6 md:w-6 text-foreground" strokeWidth={2.5} />
-                </CarouselNext>
+                <CarouselPrevious className="relative static translate-y-0 h-10 w-10 md:h-12 md:w-12 lg:h-14 lg:w-14 rounded-full bg-background/90 shadow-md border-2 border-border hover:bg-accent hover:border-primary transition-colors disabled:opacity-20 disabled:cursor-not-allowed [&_svg]:h-5 [&_svg]:w-5 md:[&_svg]:h-6 md:[&_svg]:w-6 [&_svg]:stroke-[2.5] [&_svg]:text-foreground" />
+                
+                <CarouselNext className="relative static translate-y-0 h-10 w-10 md:h-12 md:w-12 lg:h-14 lg:w-14 rounded-full bg-background/90 shadow-md border-2 border-border hover:bg-accent hover:border-primary transition-colors disabled:opacity-20 disabled:cursor-not-allowed [&_svg]:h-5 [&_svg]:w-5 md:[&_svg]:h-6 md:[&_svg]:w-6 [&_svg]:stroke-[2.5] [&_svg]:text-foreground" />
               </div>
             </Carousel>
           </div>
