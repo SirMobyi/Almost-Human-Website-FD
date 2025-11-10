@@ -111,9 +111,25 @@ const WorkSection = () => {
                                   ? `https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`
                                   : `https://drive.google.com/thumbnail?id=${video.id}&sz=w1920`
                               }
+                              srcSet={
+                                video.type === "youtube"
+                                  ? `https://img.youtube.com/vi/${video.id}/maxresdefault.jpg 1280w, https://img.youtube.com/vi/${video.id}/hqdefault.jpg 720w, https://img.youtube.com/vi/${video.id}/mqdefault.jpg 480w`
+                                  : undefined
+                              }
+                              sizes="(min-width: 1024px) 85vw, (min-width: 768px) 90vw, 85vw"
                               alt={video.title}
                               className="w-full h-full object-cover"
                               loading="lazy"
+                              onError={(e) => {
+                                const img = e.currentTarget as HTMLImageElement;
+                                if (video.type === "youtube") {
+                                  if (img.src.includes("maxresdefault")) {
+                                    img.src = `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
+                                  } else if (img.src.includes("hqdefault")) {
+                                    img.src = `https://img.youtube.com/vi/${video.id}/mqdefault.jpg`;
+                                  }
+                                }
+                              }}
                             />
                             <button
                               onClick={() => handleVideoClick(index)}
