@@ -44,16 +44,15 @@ const ServicesSection = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [videoReady, setVideoReady] = useState(false);
   useEffect(() => {
-    // Preload both videos aggressively
+    // Preload both videos
     const videos = [animationVideo, experimentalVideo];
     let loadedCount = 0;
     
     videos.forEach(videoSrc => {
       const video = document.createElement('video');
-      video.preload = 'auto';
       video.src = videoSrc;
       video.load();
-      video.oncanplaythrough = () => {
+      video.onloadeddata = () => {
         loadedCount++;
         if (loadedCount === videos.length) {
           setVideoReady(true);
