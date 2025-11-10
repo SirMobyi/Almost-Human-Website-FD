@@ -5,8 +5,6 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselPrevious,
-  CarouselNext,
   type CarouselApi,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
@@ -117,8 +115,6 @@ const WorkSection = () => {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious className="fixed left-4 md:left-8 top-1/2 -translate-y-1/2 z-50 h-10 w-10 md:h-12 md:w-12" />
-              <CarouselNext className="fixed right-4 md:right-8 top-1/2 -translate-y-1/2 z-50 h-10 w-10 md:h-12 md:w-12" />
             </Carousel>
 
             {/* Navigation Dots */}
