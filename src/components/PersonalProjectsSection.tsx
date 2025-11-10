@@ -23,14 +23,9 @@ const PersonalProjectsSection = () => {
       setPlayingVideo(null); // Stop playing video when carousel changes
     });
   }, [api]);
-  const handleVideoHover = (index: number, isHovering: boolean) => {
-    if (isHovering) {
-      autoplayPlugin.current.stop();
-      setPlayingVideo(index);
-    } else {
-      setPlayingVideo(null);
-      autoplayPlugin.current.play();
-    }
+  const handleVideoClick = (index: number) => {
+    setPlayingVideo(index);
+    autoplayPlugin.current.stop();
   };
   return <section id="personal-projects" ref={targetRef as React.RefObject<HTMLElement>} className="pt-6 md:pt-8 lg:pt-10 pb-12 md:pb-16 lg:pb-20 px-4 sm:px-6 lg:px-8 gradient-vintage">
       <div className="max-w-7xl mx-auto relative z-10">
@@ -47,16 +42,16 @@ const PersonalProjectsSection = () => {
             containScroll: false
           }}>
               <CarouselContent className="-ml-4">
-                {PERSONAL_PROJECTS_VIDEOS.map((video, index) => <CarouselItem key={video.id} className="pl-4 basis-[85%] md:basis-[90%]" onMouseEnter={() => handleVideoHover(index, true)} onMouseLeave={() => handleVideoHover(index, false)}>
+                {PERSONAL_PROJECTS_VIDEOS.map((video, index) => <CarouselItem key={video.id} className="pl-4 basis-[85%] md:basis-[90%]">
                     <div className="group">
                       <div className="aspect-video bg-black rounded-lg overflow-hidden relative mb-3">
                         {playingVideo === index ? <iframe className="w-full h-full" src={`https://drive.google.com/file/d/${video.id}/preview`} title={video.title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen /> : <>
                             <img src={`https://drive.google.com/thumbnail?id=${video.id}&sz=w1920`} alt={video.title} className="w-full h-full object-cover" loading="lazy" />
-                            <div className="absolute inset-0 flex items-center justify-center bg-black/20 hover:bg-black/40 transition-all">
-                              <svg className="w-16 h-16 md:w-20 md:h-20 text-white hover:text-primary transition-all hover:scale-110 drop-shadow-lg" fill="currentColor" viewBox="0 0 20 20">
+                            <button onClick={() => handleVideoClick(index)} className="absolute inset-0 flex items-center justify-center bg-black/20 hover:bg-black/40 transition-all cursor-pointer group" aria-label={`Play ${video.title}`}>
+                              <svg className="w-16 h-16 md:w-20 md:h-20 text-white group-hover:text-primary transition-all group-hover:scale-110 drop-shadow-lg" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
                               </svg>
-                            </div>
+                            </button>
                           </>}
                       </div>
                       
