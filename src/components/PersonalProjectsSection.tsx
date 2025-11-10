@@ -35,6 +35,16 @@ const PersonalProjectsSection = () => {
       });
     }
   };
+
+  const handleMouseEnter = () => {
+    autoplayPlugin.current.stop();
+  };
+
+  const handleMouseLeave = () => {
+    if (playingVideo === null) {
+      autoplayPlugin.current.play();
+    }
+  };
   return <section id="personal-projects" ref={targetRef as React.RefObject<HTMLElement>} className="pt-6 md:pt-8 lg:pt-10 pb-12 md:pb-16 lg:pb-20 px-4 sm:px-6 lg:px-8 gradient-vintage">
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="bg-transparent p-4 sm:p-6 md:p-8">
@@ -43,7 +53,7 @@ const PersonalProjectsSection = () => {
           </div>
 
           {/* Carousel */}
-          <div className="relative">
+          <div className="relative" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
             <Carousel setApi={setApi} plugins={[autoplayPlugin.current]} className="w-full" opts={{
             align: "center",
             loop: true,

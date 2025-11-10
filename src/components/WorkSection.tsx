@@ -43,6 +43,16 @@ const WorkSection = () => {
     }
   };
 
+  const handleMouseEnter = () => {
+    autoplayPlugin.current.stop();
+  };
+
+  const handleMouseLeave = () => {
+    if (playingVideo === null) {
+      autoplayPlugin.current.play();
+    }
+  };
+
   return (
     <section
       id="work"
@@ -61,7 +71,7 @@ const WorkSection = () => {
           </div>
 
           {/* Carousel */}
-          <div className="relative">
+          <div className="relative" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
             <Carousel
               setApi={setApi}
               plugins={[autoplayPlugin.current]}
