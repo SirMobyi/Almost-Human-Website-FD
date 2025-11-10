@@ -5,7 +5,7 @@ import socialImg from "@/assets/services/social-new.png";
 import charactersImg from "@/assets/services/character-design-new.png";
 import worldsImg from "@/assets/services/worlds-new.png";
 import experimentalImg from "@/assets/services/experimental-new.png";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface Service {
   title: string;
@@ -50,6 +50,21 @@ const services: Service[] = [
 
 const ServicesSection = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [videoReady, setVideoReady] = useState(false);
+
+  useEffect(() => {
+    // Preload the video
+    const video = document.createElement('video');
+    video.src = animationVideo;
+    video.load();
+    video.onloadeddata = () => {
+      setVideoReady(true);
+    };
+  }, []);
+
+  const shouldShowVideo = (index: number) => {
+    return hoveredIndex === index && videoReady && services[index].video;
+  };
 
   return (
     <section id="services" className="py-12 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background/80 to-background">
@@ -73,20 +88,19 @@ const ServicesSection = () => {
                 </h3>
               </div>
               <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-transparent z-[5]" />
-              {service.video && hoveredIndex === index ? (
+              <img
+                src={service.image}
+                alt={service.title}
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              {shouldShowVideo(index) && (
                 <video
                   src={service.video}
                   autoPlay
                   loop
                   muted
                   playsInline
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-              ) : (
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="absolute inset-0 w-full h-full object-cover z-[1]"
                 />
               )}
             </div>
@@ -109,20 +123,19 @@ const ServicesSection = () => {
                   </h3>
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-transparent z-[5]" />
-                {service.video && hoveredIndex === index ? (
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+                {shouldShowVideo(index) && (
                   <video
                     src={service.video}
                     autoPlay
                     loop
                     muted
                     playsInline
-                    className="absolute inset-0 w-full h-full object-cover"
-                  />
-                ) : (
-                  <img
-                    src={service.image}
-                    alt={service.title}
-                    className="absolute inset-0 w-full h-full object-cover"
+                    className="absolute inset-0 w-full h-full object-cover z-[1]"
                   />
                 )}
               </div>
