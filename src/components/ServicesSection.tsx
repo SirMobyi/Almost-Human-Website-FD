@@ -3,7 +3,7 @@ import animationImg from "@/assets/services/animation.png";
 import socialImg from "@/assets/services/social.png";
 import charactersImg from "@/assets/services/character-design-new.png";
 import worldsImg from "@/assets/services/worlds-new.png";
-import experimentalImg from "@/assets/services/experimental.png";
+import experimentalImg from "@/assets/services/experimental-new.png";
 
 interface Service {
   title: string;
