@@ -134,12 +134,12 @@ const WorkSection = () => {
             </Carousel>
 
             {/* Navigation Dots */}
-            <div className="flex justify-center gap-2 mt-6 md:mt-8">
+            <div className="flex justify-center gap-1.5 md:gap-2 mt-6 md:mt-8">
               {WORK_VIDEOS.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => api?.scrollTo(index)}
-                  className={`h-6 w-6 rounded-full transition-all flex items-center justify-center ${
+                  className={`h-4 w-4 md:h-6 md:w-6 rounded-full transition-all flex items-center justify-center ${
                     index === current
                       ? "bg-primary"
                       : "bg-transparent hover:bg-muted-foreground/20"
@@ -147,7 +147,7 @@ const WorkSection = () => {
                   aria-label={`Go to slide ${index + 1}`}
                 >
                   <span className={`rounded-full transition-all ${
-                    index === current ? "h-3 w-10 bg-primary" : "h-3 w-3 bg-muted-foreground/40"
+                    index === current ? "h-2 w-6 md:h-3 md:w-10 bg-primary" : "h-2 w-2 md:h-3 md:w-3 bg-muted-foreground/40"
                   }`} />
                 </button>
               ))}
