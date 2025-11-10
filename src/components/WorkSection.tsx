@@ -44,7 +44,7 @@ const WorkSection = () => {
     <section
       id="work"
       ref={targetRef as React.RefObject<HTMLElement>}
-      className="py-12 md:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 gradient-vintage"
+      className="pt-12 md:pt-16 lg:pt-20 pb-6 md:pb-8 lg:pb-10 px-4 sm:px-6 lg:px-8 gradient-vintage"
     >
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="bg-transparent p-4 sm:p-6 md:p-8">
