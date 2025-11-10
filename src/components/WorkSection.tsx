@@ -120,13 +120,17 @@ const WorkSection = () => {
                 <button
                   key={index}
                   onClick={() => api?.scrollTo(index)}
-                  className={`h-2 rounded-full transition-all ${
+                  className={`h-6 w-6 rounded-full transition-all flex items-center justify-center ${
                     index === current
-                      ? "w-8 bg-primary"
-                      : "w-2 bg-muted-foreground/30 hover:bg-muted-foreground/50"
+                      ? "bg-primary"
+                      : "bg-transparent hover:bg-muted-foreground/20"
                   }`}
                   aria-label={`Go to slide ${index + 1}`}
-                />
+                >
+                  <span className={`rounded-full transition-all ${
+                    index === current ? "h-3 w-10 bg-primary" : "h-3 w-3 bg-muted-foreground/40"
+                  }`} />
+                </button>
               ))}
             </div>
           </div>
