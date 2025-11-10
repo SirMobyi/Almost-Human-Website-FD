@@ -36,10 +36,7 @@ const Hero = () => {
               videoLoaded ? 'opacity-100' : 'opacity-0'
             }`}
             onLoadedData={() => setVideoLoaded(true)}
-            onError={() => {
-              console.error('Failed to load hero video');
-              setVideoLoaded(true);
-            }}
+            onError={() => setVideoLoaded(true)}
           />
         </div>
         <GridBackground />
