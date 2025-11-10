@@ -31,7 +31,7 @@ const Hero = () => {
             loop
             muted
             playsInline
-            preload="auto"
+            preload="metadata"
             className={`w-full h-[110vh] object-cover transition-opacity duration-700 ${
               videoLoaded ? 'opacity-100' : 'opacity-0'
             }`}

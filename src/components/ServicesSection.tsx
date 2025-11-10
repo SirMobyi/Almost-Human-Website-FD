@@ -7,7 +7,7 @@ import charactersImg from "@/assets/services/character-design-new.png";
 import worldsImg from "@/assets/services/worlds-new.png";
 import experimentalImg from "@/assets/services/experimental-new.png";
 import experimentalVideo from "@/assets/services/experimental-video.mp4";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 interface Service {
   title: string;
   image: string;
@@ -44,25 +44,9 @@ const services: Service[] = [{
 }];
 const ServicesSection = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [videoReady, setVideoReady] = useState(false);
-  useEffect(() => {
-    // Preload all videos
-    const videos = [animationVideo, socialVideo, experimentalVideo];
-    let loadedCount = 0;
-    videos.forEach(videoSrc => {
-      const video = document.createElement('video');
-      video.src = videoSrc;
-      video.load();
-      video.onloadeddata = () => {
-        loadedCount++;
-        if (loadedCount === videos.length) {
-          setVideoReady(true);
-        }
-      };
-    });
-  }, []);
+  
   const shouldShowVideo = (index: number) => {
-    return hoveredIndex === index && videoReady && services[index].video;
+    return hoveredIndex === index && services[index].video;
   };
   return <section id="services" className="py-12 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background/80 to-background">
       <div className="max-w-7xl mx-auto">
