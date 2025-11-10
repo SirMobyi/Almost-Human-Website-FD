@@ -8,17 +8,32 @@ import NotFound from "./pages/NotFound";
 import ScrollProgressBar from "./components/ScrollProgressBar";
 import CustomCursor from "./components/CustomCursor";
 import PullToRefreshIndicator from "./components/PullToRefreshIndicator";
+import LoadingScreen from "./components/LoadingScreen";
 import { usePullToRefresh } from "./hooks/usePullToRefresh";
+import { useState, useEffect } from "react";
 
 const queryClient = new QueryClient();
 
 const AppContent = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const { pullDistance, isRefreshing } = usePullToRefresh({
     onRefresh: async () => {
       await new Promise((resolve) => setTimeout(resolve, 1000));
       window.location.reload();
     },
   });
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return <LoadingScreen />;
+  }
 
   return (
     <>
