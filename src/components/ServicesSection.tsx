@@ -5,6 +5,7 @@ import animationVideo from "@/assets/services/animation-video.mp4";
 import socialImg from "@/assets/services/social-new.png";
 import socialVideo from "@/assets/services/social-video.mp4";
 import charactersImg from "@/assets/services/character-design-new.png";
+import charactersVideo from "@/assets/services/character-design-video.mp4";
 import worldsImg from "@/assets/services/worlds-new.png";
 import worldsVideo from "@/assets/services/worlds-video.mp4";
 import experimentalImg from "@/assets/services/experimental-new.png";
@@ -29,6 +30,7 @@ const services: Service[] = [{
 }, {
   title: "Character Design & Avatars",
   image: charactersImg,
+  video: charactersVideo,
   gridClass: "md:col-span-2 md:row-span-2"
 }, {
   title: "World-Building",
@@ -51,7 +53,7 @@ const ServicesSection = () => {
   const [videoReady, setVideoReady] = useState(false);
   useEffect(() => {
     // Preload all videos
-    const videos = [filmsVideo, animationVideo, socialVideo, worldsVideo, experimentalVideo];
+    const videos = [filmsVideo, animationVideo, socialVideo, charactersVideo, worldsVideo, experimentalVideo];
     let loadedCount = 0;
     videos.forEach(videoSrc => {
       const video = document.createElement('video');
