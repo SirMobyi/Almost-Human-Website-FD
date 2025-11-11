@@ -1,4 +1,5 @@
 import filmsImg from "@/assets/services/films-new.png";
+import filmsVideo from "@/assets/services/films-video.mp4";
 import animationImg from "@/assets/services/animation-new.png";
 import animationVideo from "@/assets/services/animation-video.mp4";
 import socialImg from "@/assets/services/social-new.png";
@@ -17,6 +18,7 @@ interface Service {
 const services: Service[] = [{
   title: "AI Films & Commercials",
   image: filmsImg,
+  video: filmsVideo,
   gridClass: "md:col-span-2 md:row-span-2"
 }, {
   title: "AI Animation & Visual Storytelling",
@@ -47,7 +49,7 @@ const ServicesSection = () => {
   const [videoReady, setVideoReady] = useState(false);
   useEffect(() => {
     // Preload all videos
-    const videos = [animationVideo, socialVideo, experimentalVideo];
+    const videos = [filmsVideo, animationVideo, socialVideo, experimentalVideo];
     let loadedCount = 0;
     videos.forEach(videoSrc => {
       const video = document.createElement('video');
