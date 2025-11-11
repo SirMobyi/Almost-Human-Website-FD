@@ -1,4 +1,4 @@
-import heroVideo from "@/assets/home-page-video.mp4";
+import heroVideo from "@/assets/home-page-video.webm";
 import heroPoster from "@/assets/hero-bg.webp";
 import logo from "@/assets/logo.svg";
 import { useParallax } from "@/hooks/useParallax";
