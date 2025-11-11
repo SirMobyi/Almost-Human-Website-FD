@@ -41,7 +41,7 @@ export const SHOWCASE_VIDEO = {
 
 // Work Videos (Google Drive IDs or YouTube IDs)
 export const WORK_VIDEOS = [
-  { id: "1XFMu6hrZalEyNbP9WiOz3F7sIO4biRRx", title: "Jeevansathi", description: "Branding, Web Design and Development", type: "drive" },
+  { id: "O8Lz4I8Gbtw", title: "Jeevansathi", description: "Branding, Web Design and Development", type: "youtube" },
   { id: "xx4tvt-KSPc", title: "Myntra", description: "Branding, Web Design and Development", type: "youtube" },
   { id: "mtZqzZxAdd0", title: "Philips", description: "Branding, Web Design and Development", type: "youtube" },
   { id: "SVmIzkThDh0", title: "Tata", description: "Branding, Web Design and Development", type: "youtube" },
