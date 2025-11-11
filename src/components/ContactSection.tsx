@@ -186,13 +186,13 @@ const ContactSection = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button type="submit" size="lg" className="flex-1 bg-white text-foreground hover:bg-[#C46210] hover:text-white transition-all duration-300 h-12 md:h-14 text-lg sm:text-lg font-bold !scale-100 !translate-y-0 !translate-x-0" disabled={isSubmitting}>
+              <Button type="submit" size="lg" className="flex-1 bg-white text-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300 h-12 md:h-14 text-lg sm:text-lg font-bold !scale-100 !translate-y-0 !translate-x-0" disabled={isSubmitting}>
                 {isSubmitting ? <>
                     <Loader2 className="mr-2 h-5 w-5 animate-spin" />
                     Sending...
                   </> : "Send Message"}
               </Button>
-              <Button type="button" size="lg" onClick={handleBookCall} className="flex-1 bg-white text-foreground hover:bg-[#C46210] hover:text-white transition-all duration-300 h-12 md:h-14 text-lg sm:text-lg font-bold !scale-100 !translate-y-0 !translate-x-0" disabled={isSubmitting} aria-label="Book a call on Calendly">
+              <Button type="button" size="lg" onClick={handleBookCall} className="flex-1 bg-white text-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300 h-12 md:h-14 text-lg sm:text-lg font-bold !scale-100 !translate-y-0 !translate-x-0" disabled={isSubmitting} aria-label="Book a call on Calendly">
                 Book a Call
               </Button>
             </div>
