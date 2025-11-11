@@ -42,17 +42,17 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 0%;
 
-    /* Primary colors - Darker purple for visibility on light theme */
-    --primary: 236 42% 60%;
+    /* Primary colors - Orange-brown theme */
+    --primary: 27 85% 42%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 236 35% 85%;
+    --secondary: 27 75% 85%;
     --secondary-foreground: 0 0% 0%;
 
     --muted: 0 0% 92%;
     --muted-foreground: 0 0% 40%;
 
-    --accent: 236 42% 65%;
+    --accent: 27 90% 50%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 45%;
@@ -60,16 +60,16 @@ All colors MUST be HSL.
 
     --border: 0 0% 85%;
     --input: 0 0% 85%;
-    --ring: 236 42% 60%;
+    --ring: 27 85% 42%;
 
     --radius: 0.75rem;
 
-    /* Custom gradients - Update for light theme */
-    --gradient-primary: linear-gradient(135deg, hsl(236 42% 60%) 0%, hsl(236 35% 70%) 100%);
-    --gradient-dark: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(236 35% 95%) 100%);
+    /* Custom gradients - Orange-brown theme */
+    --gradient-primary: linear-gradient(135deg, hsl(27 85% 42%) 0%, hsl(27 75% 55%) 100%);
+    --gradient-dark: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(27 30% 95%) 100%);
     --gradient-overlay: linear-gradient(180deg, transparent 0%, hsl(0 0% 100% / 0.8) 100%);
-    --gradient-blue: linear-gradient(135deg, hsl(236 42% 60%) 0%, hsl(220 90% 50%) 100%);
-    --gradient-pink: linear-gradient(135deg, hsl(236 42% 60%) 0%, hsl(330 85% 55%) 100%);
+    --gradient-blue: linear-gradient(135deg, hsl(27 85% 42%) 0%, hsl(220 90% 50%) 100%);
+    --gradient-pink: linear-gradient(135deg, hsl(27 85% 42%) 0%, hsl(330 85% 55%) 100%);
     --gradient-vintage: linear-gradient(135deg, hsl(40 30% 96%) 0%, hsl(35 25% 94%) 50%, hsl(40 28% 95%) 100%);
     
     /* Grain texture - Lighter for white background */
