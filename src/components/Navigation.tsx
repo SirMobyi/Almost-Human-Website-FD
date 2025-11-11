@@ -62,7 +62,7 @@ const Navigation = () => {
       </a>
 
       {/* Translucent black gradient bar behind header */}
-      <div className="absolute top-0 left-0 right-0 z-40 h-16 md:h-20 bg-gradient-to-b from-black/60 via-black/40 to-transparent" aria-hidden="true" />
+      <div className="absolute top-0 left-0 right-0 z-40 h-24 md:h-32 bg-gradient-to-b from-black/60 via-black/30 to-transparent" aria-hidden="true" />
 
       {/* Header - Always visible */}
       <header className={`absolute top-0 left-0 right-0 z-50 transition-all duration-300 h-16 md:h-20 ${
