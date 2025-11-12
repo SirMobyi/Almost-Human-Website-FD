@@ -50,7 +50,7 @@ const ClientShowcase = () => {
   return <section ref={targetRef as React.RefObject<HTMLElement>} className={`py-4 md:py-6 lg:py-8 px-4 sm:px-6 bg-black transition-opacity duration-700 relative overflow-hidden ${hasIntersected ? "animate-fade-in" : "opacity-0"}`} aria-label="Client showcase">
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-6 md:mb-8 lg:mb-10 mt-4 md:mt-6 lg:mt-8 text-white">Trusted by our partners</h2>
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-6 md:mb-8 lg:mb-10 mt-4 md:mt-6 lg:mt-8 text-white">Our partners</h2>
 
         <div className="relative overflow-hidden" role="region" aria-label="Scrolling client logos">
           <div className="inline-flex gap-4 md:gap-6 lg:gap-8" style={{
