@@ -5,14 +5,23 @@
     <link rel="icon" type="image/svg+xml" href="/assets/logo.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FSEJCFY9D7"></script>
+    <!-- Google tag (gtag.js) - Deferred for performance -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-FSEJCFY9D7');
+      
+      // Load GA after page is interactive
+      window.addEventListener('load', function() {
+        var script = document.createElement('script');
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-FSEJCFY9D7';
+        script.async = true;
+        document.head.appendChild(script);
+        
+        script.onload = function() {
+          gtag('js', new Date());
+          gtag('config', 'G-FSEJCFY9D7');
+        };
+      });
     </script>
     
     <!-- Primary Meta Tags -->
