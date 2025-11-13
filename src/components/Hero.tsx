@@ -12,7 +12,7 @@ const Hero = () => {
   const { displayedText } = useTypewriter({ 
     text: "Born from emotion, built with AI", 
     speed: 80, 
-    delay: 1000 
+    delay: 0 
   });
 
   return (

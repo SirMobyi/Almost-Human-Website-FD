@@ -57,9 +57,9 @@
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
     <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
     
-    <!-- Preload critical images -->
-    <link rel="preload" as="image" href="/logo.svg" fetchpriority="high" />
-    <link rel="preload" as="image" href="/hero-bg.png" fetchpriority="high" />
+    <!-- Preload critical images with dimensions -->
+    <link rel="preload" as="image" href="/logo.svg" fetchpriority="high" imagesrcset="/logo.svg 1400w" imagesizes="(max-width: 640px) 360px, (max-width: 768px) 500px, (max-width: 1024px) 700px, (max-width: 1280px) 1000px, (max-width: 1536px) 1200px, 1400px" />
+    <link rel="preload" as="image" href="/assets/hero-poster.webp" fetchpriority="high" />
     
     <!-- Preload critical fonts to break dependency chain -->
     <link rel="preload" as="font" href="/fonts/JUST_Sans_Medium.woff2" type="font/woff2" crossorigin="anonymous" />
