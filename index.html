@@ -68,7 +68,7 @@
     <!-- Modulepreload for main script to reduce dependency chain -->
     <link rel="modulepreload" href="/src/main.tsx" />
     
-    <!-- Fonts -->
+    <!-- Fonts - Optimized for FCP -->
     <style>
       @font-face {
         font-family: 'Advercase';
@@ -85,6 +85,10 @@
         font-style: normal;
         font-display: swap;
       }
+      
+      /* Critical above-the-fold styles for FCP */
+      body { margin: 0; background: #000; }
+      #root { min-height: 100vh; }
     </style>
   </head>
 
