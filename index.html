@@ -41,6 +41,8 @@
     <link rel="canonical" href="https://almosthuman.in/" />
     
     <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="preconnect" href="https://img.youtube.com" />
     <link rel="preconnect" href="https://www.youtube.com" />
     <link rel="preconnect" href="https://api.web3forms.com" />
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
@@ -53,6 +55,9 @@
     <!-- Preload critical fonts to break dependency chain -->
     <link rel="preload" as="font" href="/fonts/JUST_Sans_Medium.woff2" type="font/woff2" crossorigin="anonymous" />
     <link rel="preload" as="font" href="/fonts/Erstoria.otf" type="font/otf" crossorigin="anonymous" />
+    
+    <!-- Modulepreload for main script to reduce dependency chain -->
+    <link rel="modulepreload" href="/src/main.tsx" />
     
     <!-- Fonts -->
     <style>
