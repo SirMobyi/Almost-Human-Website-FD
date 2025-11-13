@@ -89,6 +89,11 @@
       /* Critical above-the-fold styles for FCP */
       body { margin: 0; background: #000; }
       #root { min-height: 100vh; }
+      
+      /* Layout optimization to prevent forced reflows */
+      header { contain: layout style; }
+      video { will-change: opacity; transform: translateZ(0); }
+      img[fetchpriority="high"] { will-change: auto; }
     </style>
   </head>
 
