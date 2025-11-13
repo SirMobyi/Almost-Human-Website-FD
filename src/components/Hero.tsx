@@ -1,6 +1,5 @@
 import heroVideo from "@/assets/home-page-video.webm";
 import heroPoster from "@/assets/hero-poster.webp";
-import logo from "@/assets/logo.svg";
 import { useParallax } from "@/hooks/useParallax";
 import { useTypewriter } from "@/hooks/useTypewriter";
 import { useState } from "react";
@@ -45,9 +44,11 @@ const Hero = () => {
       {/* Content */}
       <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-[90vw] mx-auto animate-fade-in-up">
         <img 
-          src={logo} 
+          src="/logo.svg" 
           alt="AlmostHuman" 
           fetchPriority="high"
+          width="1400"
+          height="269"
           className="w-[360px] sm:w-[500px] md:w-[700px] lg:w-[1000px] xl:w-[1200px] 2xl:w-[1400px] h-auto mx-auto mb-6 sm:mb-6 lg:mb-8"
         />
         <p className="text-lg sm:text-3xl md:text-4xl lg:text-5xl text-white font-light max-w-4xl mx-auto min-h-[2.5rem] sm:min-h-[3.5rem] text-center">
