@@ -16,9 +16,9 @@ const Hero = () => {
   });
 
   return (
-    <header className="relative h-screen w-full flex items-center justify-center overflow-hidden">
+    <header className="relative h-screen w-full flex items-center justify-center overflow-hidden" style={{ contain: 'layout' }}>
       {/* Background video with parallax overlay */}
-      <div className="absolute inset-0" aria-hidden="true">
+      <div className="absolute inset-0" aria-hidden="true" style={{ willChange: 'transform' }}>
         <div
           className="absolute inset-0 will-change-transform"
           style={{ transform: `translate3d(0, ${parallaxOffset}px, 0)` }}
