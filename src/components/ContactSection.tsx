@@ -146,15 +146,15 @@ const ContactSection = () => {
               <Input id="name" type="text" placeholder="Name" value={formData.name} onChange={e => setFormData({
               ...formData,
               name: e.target.value
-            })} className="bg-black/50 border-white/30 text-white placeholder:text-white/50 focus:border-white" required maxLength={FORM_CONFIG.maxNameLength} disabled={isSubmitting} name="name" />
+            })} className="bg-black/50 border-white/30 text-white placeholder:text-white/50 focus:border-white h-12 text-base" required maxLength={FORM_CONFIG.maxNameLength} disabled={isSubmitting} name="name" autoComplete="name" />
             </div>
 
             <div>
               <Label htmlFor="email" className="sr-only">Email</Label>
-              <Input id="email" type="email" placeholder="Email" value={formData.email} onChange={e => setFormData({
+              <Input id="email" type="email" inputMode="email" placeholder="Email" value={formData.email} onChange={e => setFormData({
               ...formData,
               email: e.target.value
-            })} className="bg-black/50 border-white/30 text-white placeholder:text-white/50 focus:border-white" required maxLength={FORM_CONFIG.maxEmailLength} disabled={isSubmitting} name="email" />
+            })} className="bg-black/50 border-white/30 text-white placeholder:text-white/50 focus:border-white h-12 text-base" required maxLength={FORM_CONFIG.maxEmailLength} disabled={isSubmitting} name="email" autoComplete="email" />
             </div>
 
             <div>
@@ -163,7 +163,7 @@ const ContactSection = () => {
               ...formData,
               projectType: value
             })} disabled={isSubmitting} required>
-                <SelectTrigger id="projectType" className="bg-black/50 border-white/30 text-white focus:border-white">
+                <SelectTrigger id="projectType" className="bg-black/50 border-white/30 text-white focus:border-white h-12 text-base">
                   <SelectValue placeholder="Select project type" />
                 </SelectTrigger>
                 <SelectContent className="bg-black border border-white/30 text-white z-50">
@@ -179,7 +179,7 @@ const ContactSection = () => {
               <Textarea id="message" placeholder="Message" value={formData.message} onChange={e => setFormData({
               ...formData,
               message: e.target.value
-            })} rows={6} className="bg-black/50 border-white/30 text-white placeholder:text-white/50 focus:border-white resize-none" required maxLength={FORM_CONFIG.maxMessageLength} disabled={isSubmitting} name="message" />
+            })} rows={6} className="bg-black/50 border-white/30 text-white placeholder:text-white/50 focus:border-white resize-none text-base" required maxLength={FORM_CONFIG.maxMessageLength} disabled={isSubmitting} name="message" />
               <p className="text-xs text-white/50 mt-1 text-right">
                 {formData.message.length}/{FORM_CONFIG.maxMessageLength}
               </p>
