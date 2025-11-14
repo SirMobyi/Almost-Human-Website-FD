@@ -10,9 +10,7 @@ import worldsImg from "@/assets/services/worlds-new.png";
 import worldsVideo from "@/assets/services/worlds-video.mp4";
 import experimentalImg from "@/assets/services/experimental-new.png";
 import experimentalVideo from "@/assets/services/experimental-video.mp4";
-import { useState, useEffect, useRef } from "react";
-import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
-import { useIsMobile } from "@/hooks/use-mobile";
+import { useState, useEffect } from "react";
 interface Service {
   title: string;
   image: string;
@@ -53,9 +51,6 @@ const services: Service[] = [{
 const ServicesSection = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [videoReady, setVideoReady] = useState(false);
-  const [playingMobileVideo, setPlayingMobileVideo] = useState<number | null>(null);
-  const isMobile = useIsMobile();
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   useEffect(() => {
     // Preload all videos
     const videos = [filmsVideo, animationVideo, socialVideo, charactersVideo, worldsVideo, experimentalVideo];
@@ -73,44 +68,8 @@ const ServicesSection = () => {
     });
   }, []);
   const shouldShowVideo = (index: number) => {
-    if (isMobile) {
-      return playingMobileVideo === index && videoReady && services[index].video;
-    }
     return hoveredIndex === index && videoReady && services[index].video;
   };
-
-  const handleMobileTap = (index: number) => {
-    setPlayingMobileVideo(prev => prev === index ? null : index);
-  };
-
-  // Intersection observer for each mobile card
-  useEffect(() => {
-    if (!isMobile) return;
-
-    const observers = cardRefs.current.map((cardRef, index) => {
-      if (!cardRef) return null;
-
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (!entry.isIntersecting && playingMobileVideo === index) {
-            setPlayingMobileVideo(null);
-          }
-        },
-        { threshold: 0.5 }
-      );
-
-      observer.observe(cardRef);
-      return observer;
-    });
-
-    return () => {
-      observers.forEach((observer, index) => {
-        if (observer && cardRefs.current[index]) {
-          observer.unobserve(cardRefs.current[index]!);
-        }
-      });
-    };
-  }, [isMobile, playingMobileVideo]);
   return <section id="services" className="py-12 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background/80 to-background">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-12 md:mb-16">What we create
@@ -136,7 +95,7 @@ const ServicesSection = () => {
 
         {/* Mobile Grid */}
         <div className="md:hidden grid grid-cols-1 gap-6">
-          {services.map((service, index) => <div key={index} ref={(el) => cardRefs.current[index] = el} className="group relative overflow-hidden rounded-3xl backdrop-blur-xl bg-card/30 border border-border/50 shadow-lg" onClick={() => handleMobileTap(index)}>
+          {services.map((service, index) => <div key={index} className="group relative overflow-hidden rounded-3xl backdrop-blur-xl bg-card/30 border border-border/50 shadow-lg" onTouchStart={() => setHoveredIndex(index)} onTouchEnd={() => setHoveredIndex(null)}>
               <div className="aspect-[4/3] relative">
                 <div className="absolute inset-0 p-6 flex flex-col justify-start z-10">
                   <h3 className="text-2xl sm:text-3xl font-bold font-just-sans text-balance leading-tight text-gray-100">
