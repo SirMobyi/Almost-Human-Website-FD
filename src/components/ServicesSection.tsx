@@ -10,7 +10,7 @@ import worldsImg from "@/assets/services/worlds-new.png";
 import worldsVideo from "@/assets/services/worlds-video.mp4";
 import experimentalImg from "@/assets/services/experimental-new.png";
 import experimentalVideo from "@/assets/services/experimental-video.mp4";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 interface Service {
   title: string;
   image: string;
@@ -51,6 +51,8 @@ const services: Service[] = [{
 const ServicesSection = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [videoReady, setVideoReady] = useState(false);
+  const touchStartPos = useRef<{ x: number; y: number } | null>(null);
+  const touchStartTime = useRef<number>(0);
   useEffect(() => {
     // Preload all videos
     const videos = [filmsVideo, animationVideo, socialVideo, charactersVideo, worldsVideo, experimentalVideo];
@@ -69,6 +71,32 @@ const ServicesSection = () => {
   }, []);
   const shouldShowVideo = (index: number) => {
     return hoveredIndex === index && videoReady && services[index].video;
+  };
+
+  const handleTouchStart = (index: number, e: React.TouchEvent) => {
+    touchStartPos.current = {
+      x: e.touches[0].clientX,
+      y: e.touches[0].clientY
+    };
+    touchStartTime.current = Date.now();
+  };
+
+  const handleTouchEnd = (index: number, e: React.TouchEvent) => {
+    if (!touchStartPos.current) return;
+
+    const touchEndX = e.changedTouches[0].clientX;
+    const touchEndY = e.changedTouches[0].clientY;
+    const touchDuration = Date.now() - touchStartTime.current;
+
+    const deltaX = Math.abs(touchEndX - touchStartPos.current.x);
+    const deltaY = Math.abs(touchEndY - touchStartPos.current.y);
+
+    // Only trigger if it's a tap (not a scroll) - small movement and quick
+    if (deltaX < 10 && deltaY < 10 && touchDuration < 300) {
+      setHoveredIndex(hoveredIndex === index ? null : index);
+    }
+
+    touchStartPos.current = null;
   };
   return <section id="services" className="py-12 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background/80 to-background">
       <div className="max-w-7xl mx-auto">
@@ -95,7 +123,7 @@ const ServicesSection = () => {
 
         {/* Mobile Grid */}
         <div className="md:hidden grid grid-cols-1 gap-6">
-          {services.map((service, index) => <div key={index} className="group relative overflow-hidden rounded-3xl backdrop-blur-xl bg-card/30 border border-border/50 shadow-lg" onTouchStart={() => setHoveredIndex(index)} onTouchEnd={() => setHoveredIndex(null)}>
+          {services.map((service, index) => <div key={index} className="group relative overflow-hidden rounded-3xl backdrop-blur-xl bg-card/30 border border-border/50 shadow-lg transition-all duration-300 active:scale-[0.98]" onTouchStart={(e) => handleTouchStart(index, e)} onTouchEnd={(e) => handleTouchEnd(index, e)}>
               <div className="aspect-[4/3] relative">
                 <div className="absolute inset-0 p-6 flex flex-col justify-start z-10">
                   <h3 className="text-2xl sm:text-3xl font-bold font-just-sans text-balance leading-tight text-gray-100">
