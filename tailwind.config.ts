@@ -18,7 +18,6 @@ export default {
         serif: ['Erstoria', 'Georgia', 'serif'],
         'just-sans': ['JUST Sans', 'system-ui', 'sans-serif'],
         'erstoria': ['Erstoria', 'Georgia', 'serif'],
-        'awesome-serif': ['AwesomeSerif', 'Georgia', 'serif'],
       },
       colors: {
         border: "hsl(var(--border))",
