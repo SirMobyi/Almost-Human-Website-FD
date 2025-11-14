@@ -34,17 +34,17 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://almosthuman.in/" />
-    
-    
+    <meta property="og:title" content="AlmostHuman - Born from emotion, built with AI" />
+    <meta property="og:description" content="We create cinematic AI films, commercials, and music videos that feel alive." />
     <meta property="og:site_name" content="AlmostHuman" />
-    <meta property="og:image" content="/og-logo.jpeg">
+    <meta property="og:image" content="https://almosthuman.in/og-logo.jpeg" />
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://almosthuman.in/" />
-    <meta property="twitter:title" content="AlmostHuman - Making AI Films Feel Human" />
+    <meta property="twitter:title" content="AlmostHuman - Born from emotion, built with AI" />
     <meta property="twitter:description" content="We create cinematic AI films, commercials, and music videos that feel alive." />
-    <meta property="twitter:image" content="https://almosthuman.in/og-image.jpg" />
+    <meta property="twitter:image" content="https://almosthuman.in/og-logo.jpeg" />
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://almosthuman.in/" />
@@ -80,24 +80,28 @@
       img[fetchpriority="high"] { will-change: auto; }
     </style>
     
-  
-  
-  
-  <meta name="twitter:card" content="summary_large_image">
-  
-  
-  
-  
-  
-  
-  
-  
-  <meta property="og:title" content="AlmostHuman - Born from emotion, built with AI">
-  <meta name="twitter:title" content="AlmostHuman - Born from emotion, built with AI">
-  <meta property="og:description" content="We create cinematic AI films, commercials, and music videos that feel alive.">
-  <meta name="twitter:description" content="We create cinematic AI films, commercials, and music videos that feel alive.">
-  <meta name="twitter:image" content="/og-logo.jpeg">
-</head>
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "AlmostHuman",
+      "url": "https://almosthuman.in/",
+      "logo": "https://almosthuman.in/logo.jpeg",
+      "description": "We create cinematic AI films, commercials, and music videos that feel alive.",
+      "sameAs": [
+        "https://www.instagram.com/almosthuman.in/",
+        "https://x.com/Almosthumanin",
+        "https://www.linkedin.com/company/almosthumandotin/"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "Hello@almosthuman.in",
+        "contactType": "Customer Service"
+      }
+    }
+    </script>
+  </head>
 
   <body>
     <div id="root"></div>
