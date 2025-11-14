@@ -5,7 +5,7 @@ export const SITE_CONFIG = {
   email: "Hello@almosthuman.in",
   instagram: "https://www.instagram.com/almosthuman.in/",
   twitter: "https://x.com/Almosthumanin",
-  linkedin: "https://www.linkedin.com/company/almosthuman-in/?viewAsMember=true",
+  linkedin: "https://www.linkedin.com/company/almosthumandotin/?viewAsMember=true",
   copyright: "© AlmostHuman 2025 | WLDD",
 } as const;
 
