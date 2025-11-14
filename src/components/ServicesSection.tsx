@@ -51,6 +51,14 @@ const services: Service[] = [{
 const ServicesSection = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [videoReady, setVideoReady] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
   useEffect(() => {
     // Preload all videos
     const videos = [filmsVideo, animationVideo, socialVideo, charactersVideo, worldsVideo, experimentalVideo];
@@ -70,14 +78,20 @@ const ServicesSection = () => {
   const shouldShowVideo = (index: number) => {
     return hoveredIndex === index && videoReady && services[index].video;
   };
-  return <section id="services" className="py-12 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background/80 to-background">
+
+  const handleCardInteraction = (index: number) => {
+    if (isMobile) {
+      setHoveredIndex(hoveredIndex === index ? null : index);
+    }
+  };
+  return <section id="services" className="py-16 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background/80 to-background">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-12 md:mb-16">What we create
         </h2>
 
         {/* Desktop Bento Grid */}
         <div className="hidden md:grid md:grid-cols-4 md:auto-rows-[280px] lg:auto-rows-[320px] gap-4 lg:gap-6">
-          {services.map((service, index) => <div key={index} className={`${service.gridClass} group relative overflow-hidden rounded-3xl backdrop-blur-xl bg-card/30 border border-border/50 hover:border-primary/50 transition-all duration-500 hover:scale-[1.02]`} onMouseEnter={() => setHoveredIndex(index)} onMouseLeave={() => setHoveredIndex(null)}>
+          {services.map((service, index) => <div key={index} className={`${service.gridClass} group relative overflow-hidden rounded-3xl backdrop-blur-xl bg-card/30 border border-border/50 hover:border-primary/50 transition-all duration-500 hover:scale-[1.02] cursor-pointer`} onMouseEnter={() => !isMobile && setHoveredIndex(index)} onMouseLeave={() => !isMobile && setHoveredIndex(null)} onClick={() => handleCardInteraction(index)} onTouchStart={() => handleCardInteraction(index)}>
               <div className="absolute inset-0 p-6 lg:p-10 flex flex-col justify-start z-10">
                 <h3 className="text-2xl lg:text-4xl xl:text-5xl font-bold font-just-sans text-balance leading-tight text-gray-100">
                   {service.title === "Character Design & Avatars" ? (
@@ -95,7 +109,7 @@ const ServicesSection = () => {
 
         {/* Mobile Grid */}
         <div className="md:hidden grid grid-cols-1 gap-6">
-          {services.map((service, index) => <div key={index} className="group relative overflow-hidden rounded-3xl backdrop-blur-xl bg-card/30 border border-border/50 shadow-lg" onTouchStart={() => setHoveredIndex(index)} onTouchEnd={() => setHoveredIndex(null)}>
+          {services.map((service, index) => <div key={index} className="group relative overflow-hidden rounded-3xl backdrop-blur-xl bg-card/30 border border-border/50 shadow-lg cursor-pointer active:scale-[0.98] transition-transform" onClick={() => handleCardInteraction(index)} onTouchStart={() => handleCardInteraction(index)}>
               <div className="aspect-[4/3] relative">
                 <div className="absolute inset-0 p-6 flex flex-col justify-start z-10">
                   <h3 className="text-2xl sm:text-3xl font-bold font-just-sans text-balance leading-tight text-gray-100">
