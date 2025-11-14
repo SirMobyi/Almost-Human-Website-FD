@@ -59,7 +59,7 @@ const WorkSection = () => {
     <section
       id="work"
       ref={targetRef as React.RefObject<HTMLElement>}
-      className="pt-20 md:pt-24 lg:pt-28 pb-8 md:pb-12 lg:pb-16 px-4 sm:px-6 lg:px-8 gradient-vintage"
+      className="pt-12 md:pt-16 lg:pt-20 pb-3 md:pb-4 lg:pb-5 px-4 sm:px-6 lg:px-8 gradient-vintage"
     >
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="bg-transparent p-4 sm:p-6 md:p-8">
