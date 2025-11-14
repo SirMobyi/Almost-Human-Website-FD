@@ -29,20 +29,16 @@ const WorkSection = () => {
     api.on("select", () => {
       setCurrent(api.selectedScrollSnap());
       setPlayingVideo(null); // Stop playing video when carousel changes
+      if (playingVideo === null) {
+        autoplayPlugin.current.play();
+      }
     });
-  }, [api]);
+  }, [api, playingVideo]);
 
   const handleVideoClick = (index: number) => {
     setPlayingVideo(index);
     autoplayPlugin.current.stop();
-    // Prevent carousel from dragging when video is playing
-    if (api) {
-      api.on('pointerDown', (emblaApi) => {
-        if (playingVideo !== null) {
-          emblaApi.reInit({ watchDrag: false });
-        }
-      });
-    }
+    autoplayPlugin.current.reset();
   };
 
   const handleMouseEnter = () => {
