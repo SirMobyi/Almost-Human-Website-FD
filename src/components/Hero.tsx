@@ -1,13 +1,16 @@
 import heroVideo from "@/assets/home-page-video.webm";
+import heroMobileVideo from "@/assets/hero-mobile-video.webm";
 import heroPoster from "@/assets/hero-poster.webp";
 import { useParallax } from "@/hooks/useParallax";
 import { useTypewriter } from "@/hooks/useTypewriter";
 import { useState } from "react";
+import { useIsMobile } from "@/hooks/use-mobile";
 import GridBackground from "./GridBackground";
 import ScrollIndicator from "./ScrollIndicator";
 
 const Hero = () => {
   const [videoLoaded, setVideoLoaded] = useState(false);
+  const isMobile = useIsMobile();
   const parallaxOffset = useParallax(0.5);
   const { displayedText } = useTypewriter({ 
     text: "Born from emotion, built with AI", 
@@ -24,7 +27,7 @@ const Hero = () => {
           style={{ transform: `translate3d(0, ${parallaxOffset}px, 0)` }}
         >
           <video
-            src={heroVideo}
+            src={isMobile ? heroMobileVideo : heroVideo}
             poster={heroPoster}
             autoPlay
             loop
